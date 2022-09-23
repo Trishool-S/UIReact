@@ -39,6 +39,7 @@ function LiveMonitory() {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(null);
   const [isLoading, setIsLoading] = useState(false)
+  const [isloading, setIsloading] = useState(false)
   const [showNavSecond, setShowNavSecond] = useState(false);
   const [averageTemp, setAverageTemp] = useState([]);
   const [averageTemp1, setAverageTemp1] = useState([]);
@@ -47,6 +48,7 @@ function LiveMonitory() {
   const [Data2, setData2] = useState([]);
   const [time, setTime] = useState([]);
   const [param, setParam] = useState([]);
+  const [param_value, setValue] = useState([]);
 
 
   const handleIconsClick = (value) => {
@@ -190,7 +192,7 @@ function LiveMonitory() {
     setIsLoading(true)
     e.preventDefault();
     // setIsLoading(true)
-    const response = await fetch(`https://3wd7itxgcc.execute-api.ap-south-1.amazonaws.com/Prod/v1/sdoz/telemetry/sensor/3/agg?start_time=${start_time}&end_time=${end_time}&step_size=${currentstepsize}&param_name=${currentparameter}`);
+    const response = await fetch(`https://3wd7itxgcc.execute-api.ap-south-1.amazonaws.com/Prod/v1/sdoz/telemetry/sensor/5/agg?start_time=${start_time}&end_time=${end_time}&step_size=${currentstepsize}&param_name=${currentparameter}`);
     const json_data = await response.json();
     console.log(json_data);
 
@@ -226,7 +228,7 @@ function LiveMonitory() {
     // setIsLoading(true)
     e.preventDefault();
     // setIsLoading(true)
-    const response = await fetch(`https://3wd7itxgcc.execute-api.ap-south-1.amazonaws.com/Prod/fetch_files_s3/3/data?start_time=${start_time}&end_time=${end_time}&step_size=${currentstepsize}&param_name=${currentparameter}`);
+    const response = await fetch(`https://3wd7itxgcc.execute-api.ap-south-1.amazonaws.com/Prod/fetch_files_s3/5/data?start_time=${start_time}&end_time=${end_time}&step_size=${currentstepsize}&param_name=${currentparameter}`);
     const json = await response.json();
 
     if (response.status === 200) {
@@ -251,16 +253,20 @@ function LiveMonitory() {
   }
 
   useEffect(() => {
-    fetch("https://3wd7itxgcc.execute-api.ap-south-1.amazonaws.com/Prod/v1/sdoz/telemetry/entity/2/latest")
+    setIsloading(true)
+    fetch("https://3wd7itxgcc.execute-api.ap-south-1.amazonaws.com/Prod/v1/sdoz/telemetry/entity/5/latest")
       .then((result) => {
         result.json().then((res) => {
           // let time = [{ lastUpdatedTimeStamp: res.lastUpdatedTimeStamp}];
           // setTime(time)
           setParam(res.Parameters?.map((item) => item.name));
+          setValue(res.Parameters?.map((item) => item.value));
           setTime(res.lastUpdatedTimeStamp);
           setData2(res)
 
         })
+        setIsloading(false)
+
       })
   }, [])
   console.warn(Data2)
@@ -535,6 +541,7 @@ function LiveMonitory() {
                     <div className="card-header border-0">
                       <h4> Meter </h4>
                     </div>
+
                     <div className="card">
                       <div id="bg-meter" className="totalEnergy bg-red">
                         <h4 className='text-center'>Last Updated Date and Time</h4>
@@ -542,6 +549,7 @@ function LiveMonitory() {
                           <div className="col-md-4 col-xs-4 col-md-offset-4 col-xs-offset-4">
                             <div className="avatar">
                               <div className="border-trans energyReading" id="datetimeMaxMeter">
+                                {isloading && <div>Loading...</div>}
                                 {time}
                               </div>
                             </div>
@@ -583,23 +591,23 @@ function LiveMonitory() {
                           </div>
                           <div className="col-sm-3 text-center">
                             <div className="well-info">
-                              <p id="lblVoltageRValC1069">434.22</p>
-                              <p id="lblVoltageYValC1069">433.36</p>
-                              <p id="lblVoltageBValC1069">430.91</p>
+                              <p id="lblVoltageRValC1069">{param_value[0]}</p>
+                              <p id="lblVoltageYValC1069">000.00</p>
+                              <p id="lblVoltageBValC1069">000.00</p>
                             </div>
                           </div>
                           <div className="col-sm-3 text-center">
                             <div className="well-info">
-                              <p id="lblCurrentRValC1069">27.88</p>
-                              <p id="lblCurrentYValC1069">28.39</p>
-                              <p id="lblCurrentBValC1069">26.94</p>
+                              <p id="lblCurrentRValC1069">{param_value[1]}</p>
+                              <p id="lblCurrentYValC1069">000.00</p>
+                              <p id="lblCurrentBValC1069">000.00</p>
                             </div>
                           </div>
                           <div className="col-sm-3 text-center">
                             <div className="well-info">
                               <p id="lblAPowerRValC1069">0.00</p>
-                              <p id="lblAPowerYValC1069">6.86</p>
-                              <p id="lblAPowerBValC1069">-5.12</p>
+                              <p id="lblAPowerYValC1069">0.00</p>
+                              <p id="lblAPowerBValC1069">0.00</p>
                             </div>
                           </div>
                         </div>
@@ -610,14 +618,14 @@ function LiveMonitory() {
                             <div className="col-md-6 col-sm-12 col-xs-12">
                               <p className="pull-left">
                                 Total Active Power :&nbsp;&nbsp;
-                                <span id="lbltotalActPower_valC1069">7.87&nbsp;
+                                <span id="lbltotalActPower_valC1069">0.00&nbsp;
                                   <small>KW</small>
                                 </span>
                               </p>
                             </div>
                             <div className="col-sm-6 col-xs-12">
                               <p className="pull-right">Avg. PF:&nbsp;&nbsp;
-                                <span id="lblPFAvgvalC1069">0.13</span>
+                                <span id="lblPFAvgvalC1069">0.00</span>
                               </p>
                             </div>
                           </div>
@@ -648,7 +656,6 @@ function LiveMonitory() {
                           <option>--Select Parameter--</option>
                           <option value="Pressure">Pressure</option>
                           <option value="temperature">temperature</option>
-
                         </select>
                       </div>
 

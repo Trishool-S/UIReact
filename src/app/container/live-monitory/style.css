@@ -186,3 +186,6 @@ p {
 .b-blue {
     color: #0A0AF1;
 }
+b, strong {
+    font-weight: 700;
+}
