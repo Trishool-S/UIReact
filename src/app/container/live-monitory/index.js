@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   MDBIcon,
   MDBTabs,
@@ -44,6 +44,9 @@ function LiveMonitory() {
   const [averageTemp1, setAverageTemp1] = useState([]);
   const [date, setDate] = useState([]);
   const [date1, setDate1] = useState([]);
+  const [Data2, setData2] = useState([]);
+  const [time, setTime] = useState([]);
+  const [param, setParam] = useState([]);
 
 
   const handleIconsClick = (value) => {
@@ -247,7 +250,22 @@ function LiveMonitory() {
 
   }
 
-  console.warn(Data1)
+  useEffect(() => {
+    fetch("https://3wd7itxgcc.execute-api.ap-south-1.amazonaws.com/Prod/v1/sdoz/telemetry/entity/2/latest")
+      .then((result) => {
+        result.json().then((res) => {
+          // let time = [{ lastUpdatedTimeStamp: res.lastUpdatedTimeStamp}];
+          // setTime(time)
+          setParam(res.Parameters?.map((item) => item.name));
+          setTime(res.lastUpdatedTimeStamp);
+          setData2(res)
+
+        })
+      })
+  }, [])
+  console.warn(Data2)
+  console.warn(time)
+  console.warn(param)
   return (
     // <React.Fragment>
     //   <nav className="navbar navbar-expand-lg navbar-light bg-light1">
@@ -267,7 +285,7 @@ function LiveMonitory() {
     //     </div>
     //   </nav>
     // </React.Fragment>
-     <>
+    <>
       <MDBTabs className='mb-3'>
         <MDBTabsItem>
           <MDBTabsLink onClick={() => handleIconsClick('tab1')} active={iconsActive === 'tab1'}>
@@ -287,234 +305,425 @@ function LiveMonitory() {
       </MDBTabs>
       <MDBTabsContent>
         <MDBTabsPane show={iconsActive === 'tab1'}>
-        <>
-                <div className="col-md-12">
-                    <div className="col-sm-12">
-                        <div className="padding-10">
-                            <div className="col-sm-8">
-                                <h5 className="margin-top-0" id="name_head"></h5>
-                                <p className="p_address" id="consumerAdd"></p>
-                                <h5 className="margin-top-0 det_2">
-                                    <i className="fa fa-life-bouy" aria-hidden="true"></i>&nbsp;&nbsp;<b>Well No :</b><span id="lblPnlNo">LNC#50</span>
-                                </h5>
-                                <h5 className="margin-top-0 det_2">
-                                    <i className="fa fa-dot-circle-o "></i>&nbsp;&nbsp;<b>Well Type :</b>
-                                    <span id="lblWellType">SRP</span>
-                                </h5>
-                                <h5 className="margin-top-0 det_2">
-                                    <i className="fa fa-cubes"></i>&nbsp;&nbsp;<b>Panel Type :</b>&nbsp;
-                                    <span id="lblPanelId">DOL</span>
-                                </h5>
-                                <h5 className="margin-top-0 det_2">
-                                    <i className="fa fa-clock-o"></i>&nbsp;&nbsp;<b>Timer Status :</b>&nbsp;
-                                    <span id="lblTimerId">Continuous</span>
-                                </h5>
-                                <h5>
-                                    <i className="fa fa-list-alt " aria-hidden="true"></i>&nbsp;&nbsp;<b>IMEI No :</b><span id="lblImeiNo">867322033682519</span>
-                                </h5>
-                                <h5>
-                                    <i className="fa fa-align-justify"></i>&nbsp;&nbsp;<b>GGS/CTF :</b><span id="lblGGS">Linch GGS</span>
-                                </h5>
-                                <h5>
-                                    <i className="fa fa-align-justify"></i>&nbsp;&nbsp;<b>Location :</b><span id="lblLatLng"><b>23.41165293 , 72.3360625</b></span>
-                                </h5>
-                                <div className="container-fluid">
-                                    <button type="submit" className="btn btn-outline-primary" data-mdb-ripple-color="dark">&nbsp;&nbsp;Asset Mapping&nbsp;&nbsp;</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <button type="submit" className="btn btn-outline-primary" data-mdb-ripple-color="dark">&nbsp;&nbsp;IMEI Replacement&nbsp;&nbsp;</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <button type="submit" className="btn btn-outline-primary" data-mdb-ripple-color="dark">&nbsp;&nbsp;Set Installation Date&nbsp;&nbsp;</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                </div>
-                            </div>
-                        </div>
-                        <div className="well padding-10">
-                            <div className="container-fluid">
-                                <div className="square border border-dark mt-4">
-                                    <div className="square border border-3 mt-1">
-                                        <h5 className="margin-top-0 name_head_3">
-                                            <b><span>AREA</span>
-                                                <label>
-                                                    :
-                                                </label></b>
-                                            <span className="m_span" id="lblArea">Area V</span>
-                                        </h5>
-                                        <h5 className="margin-top-0 name_head_3">
-                                            <b><span>Installation Date</span>
-                                                <label>
-                                                    :
-                                                </label></b>
-                                            <span className="m_span" id="lblYearOfInstallation">2021-08-30</span>
-                                        </h5>
-                                        <h5 className="margin-top-0 name_head_3">
-                                            <b><span>Electrical Meter Connection No</span>
-                                                <label>
-                                                    :
-                                                </label></b>
-                                            <span className="m_span" id="lblMtrConNo">20808050532</span>
-                                        </h5>
-                                    </div>
-                                </div>
-                                <div className="square border border-dark mt-4">
-                                    <div className="square border border-3 mt-1">
-                                        <h5 className="margin-top-0 name_head_3">
-                                            <b><span>DISTRICT</span>
-                                                <label>
-                                                    :
-                                                </label></b>
-                                            <span className="m_span" id="lblDistrict">Mahesana</span>
-                                        </h5>
-                                        <h5 className="margin-top-0 name_head_3">
-                                            <b><span>VILLAGE</span>
-                                                <label>
-                                                    :
-                                                </label></b>
-                                            <span className="m_span" id="lblvlg">Modhera</span>
-                                        </h5>
-                                    </div>
-                                </div>
-                                <div className="square border border-dark mt-4">
-                                    <div className="square border border-3 mt-1">
-                                        <h5 className="margin-top-0 name_head_3">
-                                            <b><span>Transformer Capacity (kVA)</span>
-                                                <label>
-                                                    :
-                                                </label></b>
-                                            <span className="m_span" id="lblTransformerCap"></span>
-                                        </h5>
-                                        <h5 className="margin-top-0 name_head_3">
-                                            <b><span>Feeder</span>
-                                                <label>
-                                                    :
-                                                </label></b>
-                                            <span className="m_span" id="lblFeeder">LINCH SURAJ FEEDER</span>
-                                        </h5>
-                                        <h5 className="margin-top-0 name_head_3">
-                                            <b><span>Sub Station</span>
-                                                <label>
-                                                    :
-                                                </label></b>
-                                            <span className="m_span" id="lblSubStation">SURAJSS SUBSTATION</span>
-                                        </h5>
-                                        <h5 className="margin-top-0 name_head_3">
-                                            <b><span>Asset</span>
-                                                <label>
-                                                    :
-                                                </label></b>
-                                            <span className="m_span" id="lblAsset">Mehsana</span>
-                                        </h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+          <>
+            <div className="col-md-12">
+              <div className="col-sm-12">
+                <div className="padding-10">
+                  <div className="col-sm-8">
+                    <h5 className="margin-top-0" id="name_head"></h5>
+                    <p className="p_address" id="consumerAdd"></p>
+                    <h5 className="margin-top-0 det_2">
+                      <i className="fa fa-life-bouy" aria-hidden="true"></i>&nbsp;&nbsp;<b>Well No :</b><span id="lblPnlNo">LNC#50</span>
+                    </h5>
+                    <h5 className="margin-top-0 det_2">
+                      <i className="fa fa-dot-circle-o "></i>&nbsp;&nbsp;<b>Well Type :</b>
+                      <span id="lblWellType">SRP</span>
+                    </h5>
+                    <h5 className="margin-top-0 det_2">
+                      <i className="fa fa-cubes"></i>&nbsp;&nbsp;<b>Panel Type :</b>&nbsp;
+                      <span id="lblPanelId">DOL</span>
+                    </h5>
+                    <h5 className="margin-top-0 det_2">
+                      <i className="fa fa-clock-o"></i>&nbsp;&nbsp;<b>Timer Status :</b>&nbsp;
+                      <span id="lblTimerId">Continuous</span>
+                    </h5>
+                    <h5>
+                      <i className="fa fa-list-alt " aria-hidden="true"></i>&nbsp;&nbsp;<b>IMEI No :</b><span id="lblImeiNo">867322033682519</span>
+                    </h5>
+                    <h5>
+                      <i className="fa fa-align-justify"></i>&nbsp;&nbsp;<b>GGS/CTF :</b><span id="lblGGS">Linch GGS</span>
+                    </h5>
+                    <h5>
+                      <i className="fa fa-align-justify"></i>&nbsp;&nbsp;<b>Location :</b><span id="lblLatLng"><b>23.41165293 , 72.3360625</b></span>
+                    </h5>
+                    <div className="container-fluid">
+                      <button type="submit" className="btn btn-outline-primary" data-mdb-ripple-color="dark">&nbsp;&nbsp;Asset Mapping&nbsp;&nbsp;</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <button type="submit" className="btn btn-outline-primary" data-mdb-ripple-color="dark">&nbsp;&nbsp;IMEI Replacement&nbsp;&nbsp;</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <button type="submit" className="btn btn-outline-primary" data-mdb-ripple-color="dark">&nbsp;&nbsp;Set Installation Date&nbsp;&nbsp;</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </div>
+                  </div>
                 </div>
-            </>
+                <div className="well padding-10">
+                  <div className="container-fluid">
+                    <div className="square border border-dark mt-4">
+                      <div className="square border border-3 mt-1">
+                        <h5 className="margin-top-0 name_head_3">
+                          <b><span>AREA</span>
+                            <label>
+                              :
+                            </label></b>
+                          <span className="m_span" id="lblArea">Area V</span>
+                        </h5>
+                        <h5 className="margin-top-0 name_head_3">
+                          <b><span>Installation Date</span>
+                            <label>
+                              :
+                            </label></b>
+                          <span className="m_span" id="lblYearOfInstallation">2021-08-30</span>
+                        </h5>
+                        <h5 className="margin-top-0 name_head_3">
+                          <b><span>Electrical Meter Connection No</span>
+                            <label>
+                              :
+                            </label></b>
+                          <span className="m_span" id="lblMtrConNo">20808050532</span>
+                        </h5>
+                      </div>
+                    </div>
+                    <div className="square border border-dark mt-4">
+                      <div className="square border border-3 mt-1">
+                        <h5 className="margin-top-0 name_head_3">
+                          <b><span>DISTRICT</span>
+                            <label>
+                              :
+                            </label></b>
+                          <span className="m_span" id="lblDistrict">Mahesana</span>
+                        </h5>
+                        <h5 className="margin-top-0 name_head_3">
+                          <b><span>VILLAGE</span>
+                            <label>
+                              :
+                            </label></b>
+                          <span className="m_span" id="lblvlg">Modhera</span>
+                        </h5>
+                      </div>
+                    </div>
+                    <div className="square border border-dark mt-4">
+                      <div className="square border border-3 mt-1">
+                        <h5 className="margin-top-0 name_head_3">
+                          <b><span>Transformer Capacity (kVA)</span>
+                            <label>
+                              :
+                            </label></b>
+                          <span className="m_span" id="lblTransformerCap"></span>
+                        </h5>
+                        <h5 className="margin-top-0 name_head_3">
+                          <b><span>Feeder</span>
+                            <label>
+                              :
+                            </label></b>
+                          <span className="m_span" id="lblFeeder">LINCH SURAJ FEEDER</span>
+                        </h5>
+                        <h5 className="margin-top-0 name_head_3">
+                          <b><span>Sub Station</span>
+                            <label>
+                              :
+                            </label></b>
+                          <span className="m_span" id="lblSubStation">SURAJSS SUBSTATION</span>
+                        </h5>
+                        <h5 className="margin-top-0 name_head_3">
+                          <b><span>Asset</span>
+                            <label>
+                              :
+                            </label></b>
+                          <span className="m_span" id="lblAsset">Mehsana</span>
+                        </h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </>
         </MDBTabsPane>
         <MDBTabsPane show={iconsActive === 'tab2'}>
-        <Container>
-        <div className="container-fluid chart page">
-          <div className="col-sm-12">
-            <h1 className="mt-1 mb-3 fw-bold page" >
-              Sensor Data Details
-            </h1>
-            <form className="row g-3" onSubmit={Submit} >
-              <div className="col-md-3">
-                <label className="form-label fw-bold">Parameter Name</label>
-                <select name="parametername" className="form-select"
-                  onChange={(event) => changeParam(event.target.value)}
-                  value={currentparameter}   >
-                  <option>--Select Parameter--</option>
-                  <option value="Pressure">Pressure</option>
-                  <option value="temperature">temperature</option>
-
-                </select>
-              </div>
-
-              <div className="col-md-3">
-                <label className="form-label fw-bold">Step Size</label>
-                <select className="form-select" name="stepsize"
-                  onChange={(event) => changeStepsize(event.target.value)}
-                  value={currentstepsize}  >
-                  <option value="">--Select StepSize--</option>
-                  <option>1</option>
-                  <option>5</option>
-                  <option>15</option>
-                  <option>30</option>
-                  <option>45</option>
-                  <option>60</option>
-
-                </select>
-              </div>
-
-              <div className="col-md-3">
-                <label className="form-label fw-bold">DateTime</label>
-                <DateRangePicker
-                  selected={startDate}
-                  onChange={onChange}
-                  startDate={startDate}
-                  endDate={endDate}
-                  // selectsrange
-                  format="yyyy-MM-dd HH:mm:ss"
-                  placeholder="--Select your date range--"
-                />
-              </div>
-              <div className="col-md-3">
-                <div className="data_export">
-                  <button type="submit" className="btn btn-primary">Submit</button>
+          <div className='container-fluid'>
+            <div id="wid-id-1" className="heartbeat">
+              <div className="row">
+                <div className="col-xs-12 col-sm-6 col-md-4">
+                  <div className="well well-sm no-border">
+                    <div className="fa-lg">
+                      <i className="glyphicon glyphicon-record txt-color-blue"></i>&nbsp;Site
+                      :
+                      <span className="pull-right txt-color-blue">
+                        <b id="lblsitenm">NDN#162</b>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-xs-12 col-sm-6 col-md-4">
+                  <div className="well well-sm no-border">
+                    <div className="fa-lg">
+                      <i className="fa fa-pencil txt-color-purple"></i>&nbsp;IMEI No. :
+                      <span className="pull-right txt-color-purple">
+                        <b id="lblimeino">867322033662990</b>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-xs-12 col-sm-6 col-md-4">
+                  <div className="well well-sm no-border">
+                    <div className="fa-lg">
+                      <i className="fa fa-sitemap txt-color-greenDark"></i>&nbsp;Device ID:
+                      <span className="pull-right txt-color-greenDark">
+                        <b id="lbldeviceid">5238519695094180198</b>
+                      </span>
+                    </div>
+                  </div>
+                  .
                 </div>
               </div>
-              <div className="col-mt-1">
-                <button
-                  className="btn btn-primary"
-                  type="submit"
-                  onClick={Enter}
-                  color="transparent"
-                  target="_blank"
-                  download>Export Data
-                </button>
-              </div>
-            </form>
-          </div>
-          {
-            entity.map((item) =>
-              <tr>
-                <th> Entity Name: </th>
-                <td className="fw-bold" key={item.entity_name}>{item.entity_name}&nbsp;&nbsp;&nbsp;</td>
+              <div className="row">
 
-                <th>Entity Type: </th>
-                <td className="fw-bold">{item.entity_type}</td>
-              </tr>
-            )
-          }
-          <div className="card">
-            <div className="card-header border-0">
-              <div className="card-body">
-                {isLoading && <h1 className="mt-1 mb-3 fw-bold page"><LoadingSpinner /></h1>}
-                <Bar options={options} data={data} />
+                <div className="col-xs-12 col-sm-6 col-md-4">
+                  <div className="well well-sm no-border">
+                    <div className="fa-lg">
+                      <i className="fa fa-clock-o"></i>&nbsp;Time:
+                      <span className="pull-right txt-color-greenDark">
+                        <b id="lblRtcTime">2022-09-21 16:35:02</b>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-xs-12 col-sm-6 col-md-4">
+                  <div className="well well-sm no-border">
+                    <div className="fa-lg">
+                      <i className="fa fa-signal" aria-hidden="true"></i>&nbsp;RSSI:
+                      <span className="pull-right txt-color-greenDark">
+                        <b id="lblrssi">16</b>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-xs-12 col-sm-6 col-md-4">
+                  <div className="well well-sm no-border">
+                    <div className="fa-lg">
+                      <i className="fa fa-signal" aria-hidden="true"></i>&nbsp;Status:
+                      <div className="txt-color-greenDark">
+                        {/* <!-- <i className="glyphicon glyphicon-sd-video" aria-hidden="true" id="lblsd"
+                                className="txt-color-greenDark" title="SD Card"></i> --> */}
+                        <i className="fa fa-file-o" id="lblsim" aria-hidden="true" rel="tooltip" title="" data-original-title="Sim Card"></i>
+                        <img src="img/sim1.1.png" className="sim1" rel="tooltip" title="" data-original-title="Current Sim Slot" />
+                        <img src="img/sim2.1.png" className="sim2" rel="tooltip" title="" data-original-title="Current Sim Slot" />
+                        {/* <!-- <span className="fa-stack sim1" style="text-align: center; font-size: 10px;" rel="tooltip" title="Current Sim Slot">
+                                    The icon that will wrap the number
+                                    <span className="fa fa-square-o fa-stack-2x"></span>
+                                    a strong element with the custom content, in this case a number
+                                    <strong className="fa-stack-1x">
+                                        1    
+                                    </strong>
+                                </span> 
+                                <span className="fa-stack sim2" style="text-align: center; font-size: 10px;" rel="tooltip" title="Current Sim Slot">
+                                    The icon that will wrap the number
+                                    <span className="fa fa-square-o fa-stack-2x"></span>
+                                    a strong element with the custom content, in this case a number
+                                    <strong className="fa-stack-1x">
+                                        2    
+                                    </strong>
+                                </span> --> */}
+                        <i className="fa fa-sort-amount-desc" id="lblgprs" aria-hidden="true" rel="tooltip" title="" data-original-title="GPRS"></i>
+                        <i className="glyphicon glyphicon-sort" aria-hidden="true" id="lblcon" rel="tooltip" title="" data-original-title="Connection"></i>
+                        <i className="fa fa-desktop" aria-hidden="true" id="lblnw" rel="tooltip" title="" data-original-title="Network"></i>
+                        <i className="fa fa-compress" rel="tooltip" title="" id="lblP1Fault" data-original-title="EM Port"></i>
+                        <i className="fa fa-compress txt-color-red" rel="tooltip" title="" id="lblP2Fault" data-original-title="VFD Port"></i>
+                        &nbsp;&nbsp;
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          {/* <div className="card">
-            <div className="card-header border-0">
-              <div className="card-body">
-                {isLoading && <h1 className="mt-1 mb-3 fw-bold page"><LoadingSpinner /></h1>}
-                <Chart
-                  options={options1}
-                  series={series1}
-                  // options1={options1}
-                  // series1={series1}
-                  type="line"
-                />
+
+
+          <div className='row'>
+            <div className="col-sm-12 col-md-6 col-lg-5">
+              <div className='container-fluid'>
+                <div className="col-sm-12">
+                  <div className="headersettings" role="heading">
+                    <span className="widget-icon"><i className="fa fa-table"></i></span>
+                    <div className="card-header border-0">
+                      <h4> Meter </h4>
+                    </div>
+                    <div className="card">
+                      <div id="bg-meter" className="totalEnergy bg-red">
+                        <h4 className='text-center'>Last Updated Date and Time</h4>
+                        <div className="enery_impirt">
+                          <div className="col-md-4 col-xs-4 col-md-offset-4 col-xs-offset-4">
+                            <div className="avatar">
+                              <div className="border-trans energyReading" id="datetimeMaxMeter">
+                                {time}
+                              </div>
+                            </div>
+                          </div>
+                          <div className="col-md-12 col-xs-12">
+                          </div>
+                        </div>
+                      </div>
+                      <div className="card-footer-bordered padding-5 ">
+                        <div className="row">
+                          <div className="col-sm-3 text-center">
+                          </div>
+                          <div className="col-sm-3 text-center ">
+                            <b>{param[0]}</b></div>
+                          <div className="col-sm-3 text-center">
+                            <b>{param[1]}</b>
+                          </div>
+                        </div>
+                        <div className="row" >
+                          <div className="col-sm-3 text-center">
+                          </div>
+                          <div className="col-sm-3 text-center">
+                            <b>(V)</b>
+                          </div>
+                          <div className="col-sm-3 text-center">
+                            <b>(A)</b>
+                          </div>
+                          <div className="col-sm-3 text-center">
+                            <b>(KW)</b>
+                          </div>
+                        </div>
+                        <div className="row">
+                          <div className="col-sm-3 text-center">
+                            <div className="well-info">
+                              <p className="r-red">R</p>
+                              <p className="y-green">Y</p>
+                              <p className="b-blue">B</p>
+                            </div>
+                          </div>
+                          <div className="col-sm-3 text-center">
+                            <div className="well-info">
+                              <p id="lblVoltageRValC1069">434.22</p>
+                              <p id="lblVoltageYValC1069">433.36</p>
+                              <p id="lblVoltageBValC1069">430.91</p>
+                            </div>
+                          </div>
+                          <div className="col-sm-3 text-center">
+                            <div className="well-info">
+                              <p id="lblCurrentRValC1069">27.88</p>
+                              <p id="lblCurrentYValC1069">28.39</p>
+                              <p id="lblCurrentBValC1069">26.94</p>
+                            </div>
+                          </div>
+                          <div className="col-sm-3 text-center">
+                            <div className="well-info">
+                              <p id="lblAPowerRValC1069">0.00</p>
+                              <p id="lblAPowerYValC1069">6.86</p>
+                              <p id="lblAPowerBValC1069">-5.12</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="bg-red active_power activepowerPF">
+                          <div className="active_power_squre row">
+                            <div className="col-md-6 col-sm-12 col-xs-12">
+                              <p className="pull-left">
+                                Total Active Power :&nbsp;&nbsp;
+                                <span id="lbltotalActPower_valC1069">7.87&nbsp;
+                                  <small>KW</small>
+                                </span>
+                              </p>
+                            </div>
+                            <div className="col-sm-6 col-xs-12">
+                              <p className="pull-right">Avg. PF:&nbsp;&nbsp;
+                                <span id="lblPFAvgvalC1069">0.13</span>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div> */}
-          {/* <Bar data={data} options={options} /> */}
-        </div>
-      </Container >
+
+            {/* <Container> */}
+            <div className="col-sm-12 col-md-6 col-lg-7">
+              <div className="container-fluid">
+                <div className="col-sm-12">
+                  <div className="headersettings" role="heading">
+                    <span className="widget-icon"><i className="fa fa-table"></i></span>
+                    <div className="card-header border-0">
+                      <h4> Trend </h4>
+                    </div>
+                    <form className="row g-3" onSubmit={Submit} >
+                      <div className="col-sm-3">
+                        <label className="form-label fw-bold">Parameter Name</label>
+                        <select name="parametername" className="form-select"
+                          onChange={(event) => changeParam(event.target.value)}
+                          value={currentparameter}   >
+                          <option>--Select Parameter--</option>
+                          <option value="Pressure">Pressure</option>
+                          <option value="temperature">temperature</option>
+
+                        </select>
+                      </div>
+
+                      <div className="col-sm-3">
+                        <label className="form-label fw-bold">Step Size</label>
+                        <select className="form-select" name="stepsize"
+                          onChange={(event) => changeStepsize(event.target.value)}
+                          value={currentstepsize}  >
+                          <option value="">--Select StepSize--</option>
+                          <option>1</option>
+                          <option>5</option>
+                          <option>15</option>
+                          <option>30</option>
+                          <option>45</option>
+                          <option>60</option>
+
+                        </select>
+                      </div>
+
+                      <div className="col-sm-3">
+                        <label className="form-label fw-bold">DateTime</label>
+                        <DateRangePicker
+                          selected={startDate}
+                          onChange={onChange}
+                          startDate={startDate}
+                          endDate={endDate}
+                          // selectsrange
+                          format="yyyy-MM-dd HH:mm:ss"
+                          placeholder="--Select your date range--"
+                        />
+                      </div>
+                      <div className="col-mt-1">
+                        <button type="submit" className="btn btn-primary">Submit</button>
+                      </div>
+                      <div className="col-sm-3">
+                        <button
+                          className="btn btn-primary"
+                          type="submit"
+                          onClick={Enter}
+                          color="transparent"
+                          target="_blank"
+                          download>Export Data
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                  {
+                    entity.map((item) =>
+                      <tr>
+                        <th> Entity Name: </th>
+                        <td className="fw-bold" key={item.entity_name}>{item.entity_name}&nbsp;&nbsp;&nbsp;</td>
+
+                        <th>Entity Type: </th>
+                        <td className="fw-bold">{item.entity_type}&nbsp;&nbsp;&nbsp;</td>
+                      </tr>
+                    )
+                  }
+                  {/* <div className="card"> */}
+                  <div className="card-body">
+                    {isLoading && <h1 className="mt-1 mb-3 fw-bold page"><LoadingSpinner /></h1>}
+                    <Bar options={options} data={data} />
+                  </div>
+                </div>
+                {/* </div> */}
+                {/* <Bar data={data} options={options} /> */}
+              </div>
+            </div>
+          </div>
+          {/* </Container > */}
         </MDBTabsPane>
         <MDBTabsPane show={iconsActive === 'tab3'}>Tab 3 content</MDBTabsPane>
       </MDBTabsContent>
     </>
   );
-  
+
 };
 
 export default LiveMonitory;
