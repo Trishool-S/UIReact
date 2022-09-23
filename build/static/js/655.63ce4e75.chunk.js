@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunktrishoolapp=self.webpackChunktrishoolapp||[]).push([[655],{78655:function(e,n,r){r.r(n);r(72791);var s=r(80184);n.default=function(){return(0,s.jsx)("div",{children:(0,s.jsx)("h1",{children:"PageNotFound"})})}}}]);
-//# sourceMappingURL=655.63ce4e75.chunk.js.map

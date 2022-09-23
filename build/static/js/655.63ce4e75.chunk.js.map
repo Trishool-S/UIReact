@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/655.63ce4e75.chunk.js","mappings":"+IAUA,UARA,WACE,OACE,0BACE","sources":["app/container/page-not-found/index.js"],"sourcesContent":["import React from \"react\";\r\n\r\nfunction PageNotFound() {\r\n  return (\r\n    <div>\r\n      <h1>PageNotFound</h1>\r\n    </div>\r\n  );\r\n}\r\n\r\nexport default PageNotFound;\r\n"],"names":[],"sourceRoot":""}
