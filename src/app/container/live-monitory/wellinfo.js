@@ -117,7 +117,7 @@ function Wellinfo() {
                                         <h5 className="margin-top-0 name_head_3">
                                             <b><span>Transformer Capacity (kVA)</span>
                                                 <label>
-                                                    :
+                                                    :hello
                                                 </label></b>
                                             <span className="m_span" id="lblTransformerCap"></span>
                                         </h5>
