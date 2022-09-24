@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunktrishoolapp=self.webpackChunktrishoolapp||[]).push([[284],{22284:function(n,s,t){t.r(s);var u=t(72791),e=t(16871),i=t(80184);s.default=function(){var n=(0,e.s0)();return(0,u.useEffect)((function(){n("/sign-in")})),(0,i.jsx)("div",{})}}}]);
+//# sourceMappingURL=284.1143db4b.chunk.js.map
