@@ -10,7 +10,7 @@ import { RoutePath } from "./route-path";
  */
 const Dashboard = lazy(() => import("../container/dashboard"));
 const Login = lazy(() => import("../container/auth/login"));
-// const Home = lazy(() => import("../container/home"));
+const Home = lazy(() => import("../container/home"));
 const PageNotFound = lazy(() => import("../container/page-not-found"));
 const EntryLandind = lazy(() => import("../container/entity-landing"));
 const LiveMonitory = lazy(() => import("../container/live-monitory"));
@@ -46,11 +46,11 @@ export const RouteList = [
     component: Dashboard,
     isAuth: true,
   },
-  // {
-  //   path: RoutePath.home,
-  //   component: Home,
-  //   isAuth: false,
-  // },
+  {
+    path: RoutePath.home,
+    component: Home,
+    isAuth: false,
+  },
   {
     path: RoutePath.entryLanding,
     component: EntryLandind,

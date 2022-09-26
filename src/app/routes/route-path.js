@@ -2,9 +2,9 @@
  * in this class declare route path or path name
  */
 export const RoutePath = {
-  login: "/",
+  login: "/sign-in",
   dashboard: "/dashboard",
-  // home: "/",
+  home: "/",
   entryLanding: "/entity-landing",
   liveMonitory: "/live-monitory",
   welldetails:"/well-info",
