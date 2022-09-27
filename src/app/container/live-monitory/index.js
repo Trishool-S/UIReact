@@ -198,17 +198,17 @@ function LiveMonitory() {
 
     if (response.status === 404) {
       alert("Data Not Found!");
-      window.location.href = "/charts";
+      window.location.href = "/live-monitory";
     } else if (response.status === 502) {
       alert("Bad Gateway!");
-      window.location.href = "/charts";
+      window.location.href = "/live-monitory";
     } else if (response.status === 204) {
       alert("Undefined Content!");
-      window.location.href = "/charts";
+      window.location.href = "/live-monitory";
 
     } else if (response.status === 504) {
       alert("Endpoint request Timed out");
-      window.location.href = "/charts";
+      window.location.href = "/live-monitory";
     }
 
     let entity = [{ entity_name: json_data.entity_name, entity_type: json_data.entity_type }];
@@ -282,6 +282,7 @@ function LiveMonitory() {
       const response = await fetch("https://3wd7itxgcc.execute-api.ap-south-1.amazonaws.com/Prod/v1/sdoz/telemetry/entity/5/latest");
       const res = await response.json();
       setData2(res)
+      
       setParam(res.Parameters?.map((item) => item.name));
       setValue(res.Parameters?.map((item) => item.value));
       setTime(res.lastUpdatedTimeStamp);
@@ -332,7 +333,7 @@ function LiveMonitory() {
         </MDBTabsItem>
         <MDBTabsItem>
           <MDBTabsLink onClick={() => handleIconsClick('tab3')} active={iconsActive === 'tab3'}>
-            <MDBIcon fas icon='cogs' className='me-2' /> History page
+            <MDBIcon fas icon='cogs' className='me-2' /> History
           </MDBTabsLink>
         </MDBTabsItem>
       </MDBTabs>
@@ -466,7 +467,7 @@ function LiveMonitory() {
                 <div className="col-xs-12 col-sm-6 col-md-4">
                   <div className="well well-sm no-border">
                     <div className="fa-lg">
-                      <i className="glyphicon glyphicon-record txt-color-blue"></i>&nbsp;Site
+                      <i className="glyphicon glyphicon-record txt-color-blue"></i>&nbsp;Entity Name
                       :
                       <span className="pull-right txt-color-blue">
                         <b id="lblsitenm">NDN#162</b>
@@ -501,7 +502,7 @@ function LiveMonitory() {
                 <div className="col-xs-12 col-sm-6 col-md-4">
                   <div className="well well-sm no-border">
                     <div className="fa-lg">
-                      <i className="fa fa-clock-o"></i>&nbsp;Time:
+                      <i className="fa fa-clock-o"></i>&nbsp;Entity Type:
                       <span className="pull-right txt-color-greenDark">
                         <b id="lblRtcTime">2022-09-21 16:35:02</b>
                       </span>
@@ -575,7 +576,7 @@ function LiveMonitory() {
                           <div className="col-md-4 col-xs-4 col-md-offset-4 col-xs-offset-4">
                             <div className="avatar">
                               <div className="border-trans energyReading" id="datetimeMaxMeter">
-                                {isloading && <div>Loading...</div>}
+                                {isloading && <div><LoadingSpinner /></div>}
                                 {time}
                               </div>
                             </div>
@@ -752,7 +753,84 @@ function LiveMonitory() {
           </div>
           {/* </Container > */}
         </MDBTabsPane>
-        <MDBTabsPane show={iconsActive === 'tab3'}>Tab 3</MDBTabsPane>
+        <MDBTabsPane show={iconsActive === 'tab3'}>
+          <div className="col-sm-12">
+            <div className="container-fluid">
+              <div className="headersettings" role="heading">
+                <span className="widget-icon"><i className="fa fa-table"></i></span>
+                <div className="card-header border-0">
+                  <h4> History </h4>
+                </div>
+                <form className="row g-3" onSubmit={Submit}>
+                  <div className="">
+                    <label className="form-label fw-bold">Group Name</label>
+                    <select name="parametername" className="form-select"
+                      onChange={(event) => changeParam(event.target.value)}
+                      value={currentparameter}   >
+                      <option>--Select Parameter--</option>
+                      <option value="Pressure">Pressure</option>
+                      <option value="temperature">temperature</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="form-label fw-bold">Step Size</label>
+                    <select className="form-select" name="stepsize"
+                      onChange={(event) => changeStepsize(event.target.value)}
+                      value={currentstepsize}  >
+                      <option value="">--Select StepSize--</option>
+                      <option>1</option>
+                      <option>5</option>
+                      <option>15</option>
+                      <option>30</option>
+                      <option>45</option>
+                      <option>60</option>
+                    </select>
+                  </div>
+
+                  <div className="col-1">
+                    <label className="form-label fw-bold">DateTime</label>
+                    <DateRangePicker
+                      selected={startDate}
+                      onChange={onChange}
+                      startDate={startDate}
+                      endDate={endDate}
+                      // selectsrange
+                      format="yyyy-MM-dd HH:mm:ss"
+                      placeholder="--Select your date range--"
+                    />
+                  </div>
+                  <div className="col-mt-1">
+                    <button type="submit" className="btn btn-primary">Submit</button>
+                  </div>
+                </form>
+              </div>
+              {isLoading && <h1 className="mt-1 mb-3 fw-bold page"><LoadingSpinner /></h1>}
+            </div>
+          </div>
+          <>
+            <div className='mt-1'>
+              <table className="table table-striped table-bordered" >
+                <tbody>
+                  <tr className='table-dark'>
+                    <th>Timestamp</th>
+                    <th>Temperature</th>
+                    <th>Pressure</th>
+                  </tr>
+                  {
+                    Data.map((item) =>
+                      <tr>
+                        <td>{item.Timestamp}</td>
+                        <td>{item.temperature}</td>
+                        <td>{item.Pressure}</td>
+                      </tr>
+                    )
+                  }
+                </tbody>
+              </table>
+            </div>
+          </>
+        </MDBTabsPane>
       </MDBTabsContent>
     </>
   );
