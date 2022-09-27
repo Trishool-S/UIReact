@@ -252,23 +252,50 @@ function LiveMonitory() {
 
   }
 
+  // useEffect(() => {
+  //   setIsloading(true)
+  //   fetch("https://3wd7itxgcc.execute-api.ap-south-1.amazonaws.com/Prod/v1/sdoz/telemetry/entity/5/latest")
+  //     .then((result) => {
+  //       result.json().then((res) => {
+  //         // let time = [{ lastUpdatedTimeStamp: res.lastUpdatedTimeStamp}];
+  //         // setTime(time)
+  //         setParam(res.Parameters?.map((item) => item.name));
+  //         setValue(res.Parameters?.map((item) => item.value));
+  //         setTime(res.lastUpdatedTimeStamp);
+  //         setData2(res)
+
+  //       })
+  //       setIsloading(false)
+  //     })
+  //   fetch()
+  //   const interval = setInterval(() => fetch(), 10000)
+
+  //   return () => {
+  //     clearInterval(interval);
+  //   }
+  // }, []);
+
+
   useEffect(() => {
     setIsloading(true)
-    fetch("https://3wd7itxgcc.execute-api.ap-south-1.amazonaws.com/Prod/v1/sdoz/telemetry/entity/5/latest")
-      .then((result) => {
-        result.json().then((res) => {
-          // let time = [{ lastUpdatedTimeStamp: res.lastUpdatedTimeStamp}];
-          // setTime(time)
-          setParam(res.Parameters?.map((item) => item.name));
-          setValue(res.Parameters?.map((item) => item.value));
-          setTime(res.lastUpdatedTimeStamp);
-          setData2(res)
+    async function getAlerts() {
+      const response = await fetch("https://3wd7itxgcc.execute-api.ap-south-1.amazonaws.com/Prod/v1/sdoz/telemetry/entity/5/latest");
+      const res = await response.json();
+      setData2(res)
+      setParam(res.Parameters?.map((item) => item.name));
+      setValue(res.Parameters?.map((item) => item.value));
+      setTime(res.lastUpdatedTimeStamp);
+      setIsloading(false)
 
-        })
-        setIsloading(false)
+    }
+    getAlerts()
+    const interval = setInterval(() => getAlerts(), 100000)
 
-      })
-  }, [])
+    return () => {
+      clearInterval(interval);
+    }
+  }, []);
+
   console.warn(Data2)
   console.warn(time)
   console.warn(param)
@@ -305,7 +332,7 @@ function LiveMonitory() {
         </MDBTabsItem>
         <MDBTabsItem>
           <MDBTabsLink onClick={() => handleIconsClick('tab3')} active={iconsActive === 'tab3'}>
-            <MDBIcon fas icon='cogs' className='me-2' /> Settings
+            <MDBIcon fas icon='cogs' className='me-2' /> History page
           </MDBTabsLink>
         </MDBTabsItem>
       </MDBTabs>
@@ -541,7 +568,6 @@ function LiveMonitory() {
                     <div className="card-header border-0">
                       <h4> Meter </h4>
                     </div>
-
                     <div className="card">
                       <div id="bg-meter" className="totalEnergy bg-red">
                         <h4 className='text-center'>Last Updated Date and Time</h4>
@@ -563,9 +589,9 @@ function LiveMonitory() {
                           <div className="col-sm-3 text-center">
                           </div>
                           <div className="col-sm-3 text-center ">
-                            <b>{param[0]}</b></div>
+                            <b></b></div>
                           <div className="col-sm-3 text-center">
-                            <b>{param[1]}</b>
+                            <b></b>
                           </div>
                         </div>
                         <div className="row" >
@@ -584,21 +610,21 @@ function LiveMonitory() {
                         <div className="row">
                           <div className="col-sm-3 text-center">
                             <div className="well-info">
-                              <p className="r-red">R</p>
-                              <p className="y-green">Y</p>
-                              <p className="b-blue">B</p>
+                              <p className="r-red">{param[0]}</p>
+                              <p className="y-green">{param[1]}</p>
+                              <p className="b-blue">Humidity</p>
                             </div>
                           </div>
                           <div className="col-sm-3 text-center">
                             <div className="well-info">
                               <p id="lblVoltageRValC1069">{param_value[0]}</p>
-                              <p id="lblVoltageYValC1069">000.00</p>
+                              <p id="lblVoltageYValC1069">{param_value[1]}</p>
                               <p id="lblVoltageBValC1069">000.00</p>
                             </div>
                           </div>
                           <div className="col-sm-3 text-center">
                             <div className="well-info">
-                              <p id="lblCurrentRValC1069">{param_value[1]}</p>
+                              <p id="lblCurrentRValC1069">000.00</p>
                               <p id="lblCurrentYValC1069">000.00</p>
                               <p id="lblCurrentBValC1069">000.00</p>
                             </div>
@@ -726,7 +752,7 @@ function LiveMonitory() {
           </div>
           {/* </Container > */}
         </MDBTabsPane>
-        <MDBTabsPane show={iconsActive === 'tab3'}>Tab 3 content</MDBTabsPane>
+        <MDBTabsPane show={iconsActive === 'tab3'}>Tab 3</MDBTabsPane>
       </MDBTabsContent>
     </>
   );

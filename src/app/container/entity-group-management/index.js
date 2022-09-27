@@ -9,7 +9,7 @@ import { Row, Col, Modal } from "react-bootstrap";
 import { EntityHeaderButtoh } from "../entity-landing/entity-header-btn";
 
 export default function EntityGroupManagement() {
-  const navigation = useNavigate();
+  const navigation = useNavigate();   
 
   //useState
   const { listEntityGroup, isLoading } = useSelector(
