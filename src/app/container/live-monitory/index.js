@@ -599,13 +599,13 @@ function LiveMonitory() {
                           <div className="col-sm-3 text-center">
                           </div>
                           <div className="col-sm-3 text-center">
-                            <b>(V)</b>
+                            <b></b>
                           </div>
                           <div className="col-sm-3 text-center">
-                            <b>(A)</b>
+                            <b></b>
                           </div>
                           <div className="col-sm-3 text-center">
-                            <b>(KW)</b>
+                            <b></b>
                           </div>
                         </div>
                         <div className="row">
@@ -613,7 +613,7 @@ function LiveMonitory() {
                             <div className="well-info">
                               <p className="r-red">{param[0]}</p>
                               <p className="y-green">{param[1]}</p>
-                              <p className="b-blue">Humidity</p>
+                              <p className="b-blue"></p>
                             </div>
                           </div>
                           <div className="col-sm-3 text-center">
@@ -639,7 +639,7 @@ function LiveMonitory() {
                           </div>
                         </div>
                       </div>
-                      <div className="row">
+                      {/* <div className="row">
                         <div className="bg-red active_power activepowerPF">
                           <div className="active_power_squre row">
                             <div className="col-md-6 col-sm-12 col-xs-12">
@@ -657,7 +657,7 @@ function LiveMonitory() {
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </div> */}
 
                     </div>
                   </div>
@@ -687,11 +687,11 @@ function LiveMonitory() {
                       </div>
 
                       <div className="col-sm-3">
-                        <label className="form-label fw-bold">Step Size</label>
-                        <select className="form-select" name="stepsize"
+                        <label className="form-label fw-bold">Time interval</label>
+                        <select className="form-select" name="timeinterval"
                           onChange={(event) => changeStepsize(event.target.value)}
                           value={currentstepsize}  >
-                          <option value="">--Select StepSize--</option>
+                          <option value="">--Select Time interval--</option>
                           <option>1</option>
                           <option>5</option>
                           <option>15</option>
@@ -774,11 +774,11 @@ function LiveMonitory() {
                   </div>
 
                   <div>
-                    <label className="form-label fw-bold">Step Size</label>
-                    <select className="form-select" name="stepsize"
+                    <label className="form-label fw-bold">Time interval</label>
+                    <select className="form-select" name="timeinterval"
                       onChange={(event) => changeStepsize(event.target.value)}
                       value={currentstepsize}  >
-                      <option value="">--Select StepSize--</option>
+                      <option value="">--Select Time interval--</option>
                       <option>1</option>
                       <option>5</option>
                       <option>15</option>

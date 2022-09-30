@@ -10,6 +10,7 @@ export const RoutePath = {
   welldetails:"/well-info",
   monitory:"/trend",
   createClientAdmin: "/create-client-admin",
+  WellMonitoring:"/well-monitoring",
   userManagement: "/user-management",
   profile: "/profile",
   entityGroupCreation: "/entity-group-creation",

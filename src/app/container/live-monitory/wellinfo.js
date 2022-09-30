@@ -145,13 +145,10 @@ function Wellinfo() {
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
-
                 </div>
             </>
-
         </React.Fragment>
     );
 

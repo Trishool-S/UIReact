@@ -6,7 +6,7 @@ import { RoutePath } from "../../routes/route-path";
 import TopButtonSuperAdmin from "../../components/super-admin/common-top-button";
 import { ApiClient } from "../../api";
 import { useSelector } from "react-redux";
-import {Row, Col,} from "react-bootstrap";
+import { Row, Col, } from "react-bootstrap";
 
 export default function SuperAdminDashboard() {
   // navigate
@@ -68,28 +68,41 @@ export default function SuperAdminDashboard() {
    */
   return (
     <div>
-    <div className="bradcramHeading">
-      <Row>
-        <Col lg={4}><h2 className="headingAll mt-2 mb-0">Super Admin Dashboard</h2></Col>
-        <Col lg={8} className="text-right">{renderTopButton()}</Col>
-      </Row>
-    </div>
-    <div className="">
-      <Row>
-        <Col lg={4}><h2 className="headingAll mt-2 mb-0">Existing Client Details</h2></Col>
-        <Col lg={8} className="text-right">
-              <CommonButton
-                onClickedButton={() => navigate(RoutePath.createClientAdmin)}
-                styles="btn-create-client"
-                title="Create New Client" 
-              />
+      <div className="bradcramHeading">
+        <Row>
+          <Col lg={4}><h2 className="headingAll mt-2 mb-0">Super Admin Dashboard</h2></Col>
+          <Col lg={8} className="text-right">{renderTopButton()}</Col>
+        </Row>
+      </div>
+      {/* <h4>hello how are You???</h4> */}
+      <div className="bradcramHeading">
+        <Row>
+          <Col lg={4}><h2 className="headingAll mt-2 mb-0">Well Monitoring</h2></Col>
+          <Col lg={8} className="text-right">
+            <CommonButton
+              onClickedButton={() => navigate(RoutePath.WellMonitoring)}
+              styles="btn-create-client"
+              title="Well Monitoring"
+            />
           </Col>
-      </Row>
-    </div>
+        </Row>
+      </div>
+      <div className="bradcramHeading">
+        <Row>
+          <Col lg={4}><h2 className="headingAll mt-2 mb-0">Existing Client Details</h2></Col>
+          <Col lg={8} className="text-right">
+            <CommonButton
+              onClickedButton={() => navigate(RoutePath.createClientAdmin)}
+              styles="btn-create-client"
+              title="Create New Client"
+            />
+          </Col>
+        </Row>
+      </div>
       <h4 className="heading-lg"></h4>
       {/* create new client btn */}
       <div className="div-top-btn">
-        
+
         {/* update and delete btn */}
 
         {/* <CommonButton styles="btn-create-client" title="Update" /> */}

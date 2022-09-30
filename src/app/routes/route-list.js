@@ -20,6 +20,9 @@ const Trend = lazy(() => import("../container/live-monitory/trend"));
 const CreateClientAdmin = lazy(() =>
   import("../container/create-client-admin")
 );
+const WellMonitoring = lazy(() =>
+  import("../container/Well-monitoring")
+);
 const UserManagement = lazy(() => import("../container/user-management"));
 const Profile = lazy(() => import("../container/profile"));
 const EntityGroupCreation = lazy(() =>
@@ -74,6 +77,11 @@ export const RouteList = [
   {
     path: RoutePath.createClientAdmin,
     component: CreateClientAdmin,
+    isAuth: true,
+  },
+  {
+    path: RoutePath.WellMonitoring,
+    component: WellMonitoring,
     isAuth: true,
   },
   {
