@@ -282,7 +282,7 @@ function LiveMonitory() {
       const response = await fetch("https://3wd7itxgcc.execute-api.ap-south-1.amazonaws.com/Prod/v1/sdoz/telemetry/entity/5/latest");
       const res = await response.json();
       setData2(res)
-      
+
       setParam(res.Parameters?.map((item) => item.name));
       setValue(res.Parameters?.map((item) => item.value));
       setTime(res.lastUpdatedTimeStamp);
@@ -461,75 +461,117 @@ function LiveMonitory() {
           </>
         </MDBTabsPane>
         <MDBTabsPane show={iconsActive === 'tab2'}>
-          <div className='container-fluid'>
-            <div id="wid-id-1" className="heartbeat">
-              <div className="row">
-                <div className="col-xs-12 col-sm-6 col-md-4">
-                  <div className="well well-sm no-border">
-                    <div className="fa-lg">
-                      <i className="glyphicon glyphicon-record txt-color-blue"></i>&nbsp;Entity Name
-                      :
-                      <span className="pull-right txt-color-blue">
-                        <b id="lblsitenm">NDN#162</b>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-xs-12 col-sm-6 col-md-4">
-                  <div className="well well-sm no-border">
-                    <div className="fa-lg">
-                      <i className="fa fa-pencil txt-color-purple"></i>&nbsp;IMEI No. :
-                      <span className="pull-right txt-color-purple">
-                        <b id="lblimeino">867322033662990</b>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-xs-12 col-sm-6 col-md-4">
-                  <div className="well well-sm no-border">
-                    <div className="fa-lg">
-                      <i className="fa fa-sitemap txt-color-greenDark"></i>&nbsp;Device ID:
-                      <span className="pull-right txt-color-greenDark">
-                        <b id="lbldeviceid">5238519695094180198</b>
-                      </span>
-                    </div>
-                  </div>
-                  .
-                </div>
+          <div className="container-fluid">
+            <form className="row g-3" >
+              <div className="col-sm-3">
+                <label className="form-label fw-bold">Area</label>
+                <select name="areaname" className="form-select"
+                  onChange={(event) => changeParam(event.target.value)}
+                  value={currentparameter}   >
+                  <option>--All--</option>
+                  <option value="Pressure">Area V</option>
+                </select>
               </div>
-              <div className="row">
+              <div className="col-sm-3">
+                <label className="form-label fw-bold">GGS</label>
+                <select className="form-select" name="timeinterval"
+                  onChange={(event) => changeStepsize(event.target.value)}
+                  value={currentstepsize}  >
+                  <option value="">--All--</option>
+                  <option>Linch GGS</option>
+                </select>
+              </div>
+              <div className="col-sm-3">
+                <label className="form-label fw-bold">Well</label>
+                <select className="form-select" name="well"
+                  onChange={(event) => changeStepsize(event.target.value)}
+                  value={currentstepsize}  >
+                  <option value="">--Select Well--</option>
+                  <option>LNC#107</option>
+                  <option>LNC#118</option>
+                  <option>LNC#76</option>
+                  <option>LNC#190</option>
+                  <option>LNC#122</option>
+                  <option>LNC#169</option>
+                </select>
+              </div>
+              <div className="col-mt-1">
+                <button type="submit" className="btn btn-primary">Submit</button>
+              </div>
+            </form>
+          </div>
 
-                <div className="col-xs-12 col-sm-6 col-md-4">
-                  <div className="well well-sm no-border">
-                    <div className="fa-lg">
-                      <i className="fa fa-clock-o"></i>&nbsp;Entity Type:
-                      <span className="pull-right txt-color-greenDark">
-                        <b id="lblRtcTime">2022-09-21 16:35:02</b>
-                      </span>
+
+          <div className='mt-1'>
+            <div className='container-fluid'>
+              <div id="wid-id-1" className="heartbeat">
+                <div className="row">
+                  <div className="col-xs-12 col-sm-6 col-md-4">
+                    <div className="well well-sm no-border">
+                      <div className="fa-lg">
+                        <i className="glyphicon glyphicon-record txt-color-blue"></i>&nbsp;Entity Name
+                        :
+                        <span className="pull-right txt-color-blue">
+                          <b id="lblsitenm">NDN#162</b>
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="col-xs-12 col-sm-6 col-md-4">
-                  <div className="well well-sm no-border">
-                    <div className="fa-lg">
-                      <i className="fa fa-signal" aria-hidden="true"></i>&nbsp;RSSI:
-                      <span className="pull-right txt-color-greenDark">
-                        <b id="lblrssi">16</b>
-                      </span>
+                  <div className="col-xs-12 col-sm-6 col-md-4">
+                    <div className="well well-sm no-border">
+                      <div className="fa-lg">
+                        <i className="fa fa-pencil txt-color-purple"></i>&nbsp;IMEI No. :
+                        <span className="pull-right txt-color-purple">
+                          <b id="lblimeino">867322033662990</b>
+                        </span>
+                      </div>
                     </div>
                   </div>
+                  <div className="col-xs-12 col-sm-6 col-md-4">
+                    <div className="well well-sm no-border">
+                      <div className="fa-lg">
+                        <i className="fa fa-sitemap txt-color-greenDark"></i>&nbsp;Device ID:
+                        <span className="pull-right txt-color-greenDark">
+                          <b id="lbldeviceid">5238519695094180198</b>
+                        </span>
+                      </div>
+                    </div>
+                    .
+                  </div>
                 </div>
-                <div className="col-xs-12 col-sm-6 col-md-4">
-                  <div className="well well-sm no-border">
-                    <div className="fa-lg">
-                      <i className="fa fa-signal" aria-hidden="true"></i>&nbsp;Status:
-                      <div className="txt-color-greenDark">
-                        {/* <!-- <i className="glyphicon glyphicon-sd-video" aria-hidden="true" id="lblsd"
+                <div className="row">
+
+                  <div className="col-xs-12 col-sm-6 col-md-4">
+                    <div className="well well-sm no-border">
+                      <div className="fa-lg">
+                        <i className="fa fa-clock-o"></i>&nbsp;Entity Type:
+                        <span className="pull-right txt-color-greenDark">
+                          <b id="lblRtcTime">2022-09-21 16:35:02</b>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-xs-12 col-sm-6 col-md-4">
+                    <div className="well well-sm no-border">
+                      <div className="fa-lg">
+                        <i className="fa fa-signal" aria-hidden="true"></i>&nbsp;RSSI:
+                        <span className="pull-right txt-color-greenDark">
+                          <b id="lblrssi">16</b>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-xs-12 col-sm-6 col-md-4">
+                    <div className="well well-sm no-border">
+                      <div className="fa-lg">
+                        <i className="fa fa-signal" aria-hidden="true"></i>&nbsp;Status:
+                        <div className="txt-color-greenDark">
+                          {/* <!-- <i className="glyphicon glyphicon-sd-video" aria-hidden="true" id="lblsd"
                                 className="txt-color-greenDark" title="SD Card"></i> --> */}
-                        <i className="fa fa-file-o" id="lblsim" aria-hidden="true" rel="tooltip" title="" data-original-title="Sim Card"></i>
-                        <img src="img/sim1.1.png" className="sim1" rel="tooltip" title="" data-original-title="Current Sim Slot" />
-                        <img src="img/sim2.1.png" className="sim2" rel="tooltip" title="" data-original-title="Current Sim Slot" />
-                        {/* <!-- <span className="fa-stack sim1" style="text-align: center; font-size: 10px;" rel="tooltip" title="Current Sim Slot">
+                          <i className="fa fa-file-o" id="lblsim" aria-hidden="true" rel="tooltip" title="" data-original-title="Sim Card"></i>
+                          <img src="img/sim1.1.png" className="sim1" rel="tooltip" title="" data-original-title="Current Sim Slot" />
+                          <img src="img/sim2.1.png" className="sim2" rel="tooltip" title="" data-original-title="Current Sim Slot" />
+                          {/* <!-- <span className="fa-stack sim1" style="text-align: center; font-size: 10px;" rel="tooltip" title="Current Sim Slot">
                                     The icon that will wrap the number
                                     <span className="fa fa-square-o fa-stack-2x"></span>
                                     a strong element with the custom content, in this case a number
@@ -545,101 +587,99 @@ function LiveMonitory() {
                                         2    
                                     </strong>
                                 </span> --> */}
-                        <i className="fa fa-sort-amount-desc" id="lblgprs" aria-hidden="true" rel="tooltip" title="" data-original-title="GPRS"></i>
-                        <i className="glyphicon glyphicon-sort" aria-hidden="true" id="lblcon" rel="tooltip" title="" data-original-title="Connection"></i>
-                        <i className="fa fa-desktop" aria-hidden="true" id="lblnw" rel="tooltip" title="" data-original-title="Network"></i>
-                        <i className="fa fa-compress" rel="tooltip" title="" id="lblP1Fault" data-original-title="EM Port"></i>
-                        <i className="fa fa-compress txt-color-red" rel="tooltip" title="" id="lblP2Fault" data-original-title="VFD Port"></i>
-                        &nbsp;&nbsp;
+                          <i className="fa fa-sort-amount-desc" id="lblgprs" aria-hidden="true" rel="tooltip" title="" data-original-title="GPRS"></i>
+                          <i className="glyphicon glyphicon-sort" aria-hidden="true" id="lblcon" rel="tooltip" title="" data-original-title="Connection"></i>
+                          <i className="fa fa-desktop" aria-hidden="true" id="lblnw" rel="tooltip" title="" data-original-title="Network"></i>
+                          <i className="fa fa-compress" rel="tooltip" title="" id="lblP1Fault" data-original-title="EM Port"></i>
+                          <i className="fa fa-compress txt-color-red" rel="tooltip" title="" id="lblP2Fault" data-original-title="VFD Port"></i>
+                          &nbsp;&nbsp;
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-
-
-          <div className='row'>
-            <div className="col-sm-12 col-md-6 col-lg-5">
-              <div className='container-fluid'>
-                <div className="col-sm-12">
-                  <div className="headersettings" role="heading">
-                    <span className="widget-icon"><i className="fa fa-table"></i></span>
-                    <div className="card-header border-0">
-                      <h4> Meter </h4>
-                    </div>
-                    <div className="card">
-                      <div id="bg-meter" className="totalEnergy bg-red">
-                        <h4 className='text-center'>Last Updated Date and Time</h4>
-                        <div className="enery_impirt">
-                          <div className="col-md-4 col-xs-4 col-md-offset-4 col-xs-offset-4">
-                            <div className="avatar">
-                              <div className="border-trans energyReading" id="datetimeMaxMeter">
-                                {isloading && <div><LoadingSpinner /></div>}
-                                {time}
+            <div className='row'>
+              <div className="col-sm-12 col-md-6 col-lg-5">
+                <div className='container-fluid'>
+                  <div className="col-sm-12">
+                    <div className="headersettings" role="heading">
+                      <span className="widget-icon"><i className="fa fa-table"></i></span>
+                      <div className="card-header border-0">
+                        <h4> Meter </h4>
+                      </div>
+                      <div className="card">
+                        <div id="bg-meter" className="totalEnergy bg-red">
+                          <h4 className='text-center'>Last Updated Date and Time</h4>
+                          <div className="enery_impirt">
+                            <div className="col-md-4 col-xs-4 col-md-offset-4 col-xs-offset-4">
+                              <div className="avatar">
+                                <div className="border-trans energyReading" id="datetimeMaxMeter">
+                                  {isloading && <div><LoadingSpinner /></div>}
+                                  {time}
+                                </div>
                               </div>
                             </div>
-                          </div>
-                          <div className="col-md-12 col-xs-12">
-                          </div>
-                        </div>
-                      </div>
-                      <div className="card-footer-bordered padding-5 ">
-                        <div className="row">
-                          <div className="col-sm-3 text-center">
-                          </div>
-                          <div className="col-sm-3 text-center ">
-                            <b></b></div>
-                          <div className="col-sm-3 text-center">
-                            <b></b>
-                          </div>
-                        </div>
-                        <div className="row" >
-                          <div className="col-sm-3 text-center">
-                          </div>
-                          <div className="col-sm-3 text-center">
-                            <b></b>
-                          </div>
-                          <div className="col-sm-3 text-center">
-                            <b></b>
-                          </div>
-                          <div className="col-sm-3 text-center">
-                            <b></b>
-                          </div>
-                        </div>
-                        <div className="row">
-                          <div className="col-sm-3 text-center">
-                            <div className="well-info">
-                              <p className="r-red">{param[0]}</p>
-                              <p className="y-green">{param[1]}</p>
-                              <p className="b-blue"></p>
+                            <div className="col-md-12 col-xs-12">
                             </div>
                           </div>
-                          <div className="col-sm-3 text-center">
-                            <div className="well-info">
-                              <p id="lblVoltageRValC1069">{param_value[0]}</p>
-                              <p id="lblVoltageYValC1069">{param_value[1]}</p>
-                              <p id="lblVoltageBValC1069">000.00</p>
+                        </div>
+                        <div className="card-footer-bordered padding-5 ">
+                          <div className="row">
+                            <div className="col-sm-3 text-center">
+                            </div>
+                            <div className="col-sm-3 text-center ">
+                              <b></b></div>
+                            <div className="col-sm-3 text-center">
+                              <b></b>
                             </div>
                           </div>
-                          <div className="col-sm-3 text-center">
+                          <div className="row">
+                            <div className="col-sm-3 text-center">
+                            </div>
+                            <div className="col-sm-3 text-center">
+                              <b></b>
+                            </div>
+                            <div className="col-sm-3 text-center">
+                              <b></b>
+                            </div>
+                            <div className="col-sm-3 text-center">
+                              <b></b>
+                            </div>
+                          </div>
+                          <div className="row">
+                            <div className="col-sm-3 text-center">
+                              <div className="well-info">
+                                <p className="r-red">{param[0]}</p>
+                                <p className="y-green">{param[1]}</p>
+                                <p className="b-blue"></p>
+                              </div>
+                            </div>
+                            <div className="col-sm-3 text-center">
+                              <div className="well-info">
+                                <p id="lblVoltageRValC1069">{param_value[0]}</p>
+                                <p id="lblVoltageYValC1069">{param_value[1]}</p>
+                                {/* <p id="lblVoltageBValC1069">000.00</p> */}
+                              </div>
+                            </div>
+                            {/* <div className="col-sm-3 text-center">
                             <div className="well-info">
                               <p id="lblCurrentRValC1069">000.00</p>
                               <p id="lblCurrentYValC1069">000.00</p>
                               <p id="lblCurrentBValC1069">000.00</p>
                             </div>
-                          </div>
-                          <div className="col-sm-3 text-center">
+                          </div> */}
+                            {/* <div className="col-sm-3 text-center">
                             <div className="well-info">
                               <p id="lblAPowerRValC1069">0.00</p>
                               <p id="lblAPowerYValC1069">0.00</p>
                               <p id="lblAPowerBValC1069">0.00</p>
                             </div>
+                          </div> */}
                           </div>
                         </div>
-                      </div>
-                      {/* <div className="row">
+                        {/* <div className="row">
                         <div className="bg-red active_power activepowerPF">
                           <div className="active_power_squre row">
                             <div className="col-md-6 col-sm-12 col-xs-12">
@@ -658,100 +698,97 @@ function LiveMonitory() {
                           </div>
                         </div>
                       </div> */}
-
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+              {/* <Container> */}
+              <div className="col-sm-12 col-md-6 col-lg-7">
+                <div className="container-fluid">
+                  <div className="col-sm-12">
+                    <div className="headersettings" role="heading">
+                      <span className="widget-icon"><i className="fa fa-table"></i></span>
+                      <div className="card-header border-0">
+                        <h4> Trend </h4>
+                      </div>
+                      <form className="row g-3" onSubmit={Submit} >
+                        <div className="col-sm-3">
+                          <label className="form-label fw-bold">Parameter Name</label>
+                          <select name="parametername" className="form-select"
+                            onChange={(event) => changeParam(event.target.value)}
+                            value={currentparameter}   >
+                            <option>--Select Parameter--</option>
+                            <option value="Pressure">Pressure</option>
+                            <option value="temperature">temperature</option>
+                          </select>
+                        </div>
+                        <div className="col-sm-3">
+                          <label className="form-label fw-bold">Time interval</label>
+                          <select className="form-select" name="timeinterval"
+                            onChange={(event) => changeStepsize(event.target.value)}
+                            value={currentstepsize}  >
+                            <option value="">--Select Time interval--</option>
+                            <option>1</option>
+                            <option>5</option>
+                            <option>15</option>
+                            <option>30</option>
+                            <option>45</option>
+                            <option>60</option>
 
-            {/* <Container> */}
-            <div className="col-sm-12 col-md-6 col-lg-7">
-              <div className="container-fluid">
-                <div className="col-sm-12">
-                  <div className="headersettings" role="heading">
-                    <span className="widget-icon"><i className="fa fa-table"></i></span>
-                    <div className="card-header border-0">
-                      <h4> Trend </h4>
+                          </select>
+                        </div>
+                        <div className="col-sm-3">
+                          <label className="form-label fw-bold">DateTime</label>
+                          <DateRangePicker
+                            selected={startDate}
+                            onChange={onChange}
+                            startDate={startDate}
+                            endDate={endDate}
+                            // selectsrange
+                            format="yyyy-MM-dd HH:mm:ss"
+                            placeholder="--Select your date range--"
+                          />
+                        </div>
+                        <div className="col-mt-1">
+                          <button type="submit" className="btn btn-primary">Submit</button>
+                        </div>
+                        <div className="col-sm-3">
+                          <button
+                            className="btn btn-primary"
+                            type="submit"
+                            onClick={Enter}
+                            color="transparent"
+                            target="_blank"
+                            download>Export Data
+                          </button>
+                        </div>
+                      </form>
                     </div>
-                    <form className="row g-3" onSubmit={Submit} >
-                      <div className="col-sm-3">
-                        <label className="form-label fw-bold">Parameter Name</label>
-                        <select name="parametername" className="form-select"
-                          onChange={(event) => changeParam(event.target.value)}
-                          value={currentparameter}   >
-                          <option>--Select Parameter--</option>
-                          <option value="Pressure">Pressure</option>
-                          <option value="temperature">temperature</option>
-                        </select>
-                      </div>
+                    {
+                      entity.map((item) =>
+                        <tr>
+                          <th> Entity Name: </th>
+                          <td className="fw-bold" key={item.entity_name}>{item.entity_name}&nbsp;&nbsp;&nbsp;</td>
 
-                      <div className="col-sm-3">
-                        <label className="form-label fw-bold">Time interval</label>
-                        <select className="form-select" name="timeinterval"
-                          onChange={(event) => changeStepsize(event.target.value)}
-                          value={currentstepsize}  >
-                          <option value="">--Select Time interval--</option>
-                          <option>1</option>
-                          <option>5</option>
-                          <option>15</option>
-                          <option>30</option>
-                          <option>45</option>
-                          <option>60</option>
-
-                        </select>
-                      </div>
-
-                      <div className="col-sm-3">
-                        <label className="form-label fw-bold">DateTime</label>
-                        <DateRangePicker
-                          selected={startDate}
-                          onChange={onChange}
-                          startDate={startDate}
-                          endDate={endDate}
-                          // selectsrange
-                          format="yyyy-MM-dd HH:mm:ss"
-                          placeholder="--Select your date range--"
-                        />
-                      </div>
-                      <div className="col-mt-1">
-                        <button type="submit" className="btn btn-primary">Submit</button>
-                      </div>
-                      <div className="col-sm-3">
-                        <button
-                          className="btn btn-primary"
-                          type="submit"
-                          onClick={Enter}
-                          color="transparent"
-                          target="_blank"
-                          download>Export Data
-                        </button>
-                      </div>
-                    </form>
+                          <th>Entity Type: </th>
+                          <td className="fw-bold">{item.entity_type}&nbsp;&nbsp;&nbsp;</td>
+                        </tr>
+                      )
+                    }
+                    {/* <div className="card"> */}
+                    <div className="card-body">
+                      {isLoading && <h1 className="mt-1 mb-3 fw-bold page"><LoadingSpinner /></h1>}
+                      <Bar options={options} data={data} />
+                    </div>
                   </div>
-                  {
-                    entity.map((item) =>
-                      <tr>
-                        <th> Entity Name: </th>
-                        <td className="fw-bold" key={item.entity_name}>{item.entity_name}&nbsp;&nbsp;&nbsp;</td>
-
-                        <th>Entity Type: </th>
-                        <td className="fw-bold">{item.entity_type}&nbsp;&nbsp;&nbsp;</td>
-                      </tr>
-                    )
-                  }
-                  {/* <div className="card"> */}
-                  <div className="card-body">
-                    {isLoading && <h1 className="mt-1 mb-3 fw-bold page"><LoadingSpinner /></h1>}
-                    <Bar options={options} data={data} />
-                  </div>
+                  {/* </div> */}
+                  {/* <Bar data={data} options={options} /> */}
                 </div>
-                {/* </div> */}
-                {/* <Bar data={data} options={options} /> */}
               </div>
             </div>
+            {/* </Container > */}
           </div>
-          {/* </Container > */}
         </MDBTabsPane>
         <MDBTabsPane show={iconsActive === 'tab3'}>
           <div className="col-sm-12">
@@ -772,7 +809,6 @@ function LiveMonitory() {
                       <option value="temperature">temperature</option>
                     </select>
                   </div>
-
                   <div>
                     <label className="form-label fw-bold">Time interval</label>
                     <select className="form-select" name="timeinterval"
