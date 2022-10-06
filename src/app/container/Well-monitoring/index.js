@@ -6,14 +6,13 @@ export default function WellMonitoring() {
 
     return (
         <>
-            <div className="container-fluid">
-                <div className="mt-1">
-                    <div className="col-md-10">
-                        <h4 className="modal-title">
-                            Well Monitoring
-                        </h4>
+            <div className="mt-1">
+                <div className="col-md-12">
+                    <div className="card-header border-0">
+                        <h4> Well Monitoring </h4>
                     </div>
-
+                </div>
+                <div className="container-fluid">
                     <form className="row g-3">
                         <div className="col-sm-3">
                             <label className="form-label fw-bold">Asset</label>
@@ -84,7 +83,6 @@ export default function WellMonitoring() {
                                         LNC#107
                                     </Link>
                                 </td>
-
                                 <td>
                                     <center>SRP</center>
                                 </td>
@@ -94,10 +92,10 @@ export default function WellMonitoring() {
                                 <td>Timer Mode</td>
                                 <td>Flowing</td>
                                 <td>
-                                    <span>OFF</span></td>
+                                    <span>OFF</span>
+                                </td>
                                 <td>
                                     <span >Available</span></td>
-
                                 <td>
                                     <span>29-09-2022</span>
                                     <span>11:45:02</span>
@@ -113,7 +111,6 @@ export default function WellMonitoring() {
                                             430.66, <span>430.20</span>
                                             , <span>428.42</span>
                                             <b>V</b> </span>
-
                                         <span>
                                             <b>Current: </b>
                                             <span>0.00,
@@ -121,7 +118,6 @@ export default function WellMonitoring() {
                                                 </span>0.00</span>
                                             <b>A</b>
                                         </span>
-
                                         <span>
                                             <b>Power: </b>
                                             <span>
@@ -139,9 +135,7 @@ export default function WellMonitoring() {
                                 <td>
                                     <b>SPP</b> :
                                     <b>OLR</b> :
-
                                 </td>
-
                             </tr>
                             <tr>
                                 <td>2</td>
@@ -197,7 +191,6 @@ export default function WellMonitoring() {
                                                 <span>
                                                     <span>
                                                         <b>Frequency: </b>0.00&nbsp;<b>Hz</b>
-
                                                     </span>
                                                     <span><b>Torque: </b>0&nbsp;<b>%</b> </span>
                                                     <span><b>Speed: </b>0&nbsp;<b>RPM</b></span>
@@ -206,7 +199,6 @@ export default function WellMonitoring() {
                                         </span>
                                     </span>
                                 </td>
-
                             </tr>
                             <tr>
                                 <td>3</td>
@@ -219,7 +211,9 @@ export default function WellMonitoring() {
                                 <td>
                                     <center>SRP</center>
                                 </td>
-                                <td><center>DOL</center></td>
+                                <td>
+                                    <center>DOL</center>
+                                </td>
                                 <td>Continuous</td>
                                 <td>Flowing</td>
                                 <td>
@@ -231,7 +225,6 @@ export default function WellMonitoring() {
                                 <td>
                                     <span>
                                         29-09-2022</span>
-
                                     <span>11:45:01</span>
                                 </td>
                                 <td>
@@ -246,7 +239,6 @@ export default function WellMonitoring() {
                                             , <span>424.67</span>
                                             <b>V</b>
                                         </span>
-
                                         <span>
                                             <b>Current: </b>
                                             <span>31.84,
@@ -266,9 +258,7 @@ export default function WellMonitoring() {
                                 </td>
                                 <td>
                                     <b>SPP</b> :
-
                                     <b>OLR</b> :
-
                                 </td>
                             </tr>
                             <tr>
@@ -331,9 +321,7 @@ export default function WellMonitoring() {
                                 </td>
                                 <td>
                                     <b>SPP</b> :
-
                                     <b>OLR</b> :
-
                                 </td>
                             </tr>
                             <tr>
@@ -341,7 +329,6 @@ export default function WellMonitoring() {
                                 <td>Area V</td>
                                 <td>Linch GGS</td>
                                 <td>
-
                                     <Link to={RoutePath.liveMonitory}>
                                         LNC#190
                                     </Link>
@@ -544,7 +531,6 @@ export default function WellMonitoring() {
                                 <td>Area V</td>
                                 <td>Linch GGS</td>
                                 <td>
-
                                     <Link to={RoutePath.liveMonitory}>
                                         LNC#127
                                     </Link>
@@ -620,9 +606,11 @@ export default function WellMonitoring() {
                                                     <span>
                                                         <b>Frequency: </b>14.42&nbsp;<b>Hz</b>
                                                     </span>
-                                                    <span><b>Torque: </b>-41&nbsp;<b>%</b>
+                                                    <span>
+                                                        <b>Torque: </b>-41&nbsp;<b>%</b>
                                                     </span>
-                                                    <span><b>Speed: </b>30&nbsp;<b>RPM</b>
+                                                    <span>
+                                                        <b>Speed: </b>30&nbsp;<b>RPM</b>
                                                     </span>
                                                 </span>
                                             </span>

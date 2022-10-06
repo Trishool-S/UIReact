@@ -8,6 +8,7 @@ export const RoutePath = {
   entryLanding: "/entity-landing",
   liveMonitory: "/live-monitory",
   welldetails:"/well-info",
+  wellsinfo:"/welldetails",
   monitory:"/trend",
   createClientAdmin: "/create-client-admin",
   WellMonitoring:"/well-monitoring",

@@ -16,6 +16,8 @@ const EntryLandind = lazy(() => import("../container/entity-landing"));
 const LiveMonitory = lazy(() => import("../container/live-monitory"));
 const Wellinfo = lazy(() => import("../container/live-monitory/wellinfo"));
 const Trend = lazy(() => import("../container/live-monitory/trend"));
+const Well = lazy(() => import("../container/welldetails"));
+
 
 const CreateClientAdmin = lazy(() =>
   import("../container/create-client-admin")
@@ -67,6 +69,11 @@ export const RouteList = [
   {
     path: RoutePath.welldetails,
     component: Wellinfo,
+    isAuth: true,
+  },
+  {
+    path: RoutePath.wellsinfo,
+    component: Well,
     isAuth: true,
   },
   {

@@ -49,6 +49,10 @@ function LiveMonitory() {
   const [time, setTime] = useState([]);
   const [param, setParam] = useState([]);
   const [param_value, setValue] = useState([]);
+  const [entity_name, setEntity_name] = useState([]);
+  const [entity_type, setEntity_type] = useState([]);
+
+
 
 
   const handleIconsClick = (value) => {
@@ -282,10 +286,11 @@ function LiveMonitory() {
       const response = await fetch("https://3wd7itxgcc.execute-api.ap-south-1.amazonaws.com/Prod/v1/sdoz/telemetry/entity/5/latest");
       const res = await response.json();
       setData2(res)
-
       setParam(res.Parameters?.map((item) => item.name));
       setValue(res.Parameters?.map((item) => item.value));
       setTime(res.lastUpdatedTimeStamp);
+      setEntity_name(res.entity_name)
+      setEntity_type(res.entity_type)
       setIsloading(false)
 
     }
@@ -512,7 +517,7 @@ function LiveMonitory() {
                         <i className="glyphicon glyphicon-record txt-color-blue"></i>&nbsp;Entity Name
                         :
                         <span className="pull-right txt-color-blue">
-                          <b id="lblsitenm">NDN#162</b>
+                          <b id="lblsitenm">{entity_name}</b>
                         </span>
                       </div>
                     </div>
@@ -546,7 +551,7 @@ function LiveMonitory() {
                       <div className="fa-lg">
                         <i className="fa fa-clock-o"></i>&nbsp;Entity Type:
                         <span className="pull-right txt-color-greenDark">
-                          <b id="lblRtcTime">2022-09-21 16:35:02</b>
+                          <b id="lblRtcTime">{entity_type}</b>
                         </span>
                       </div>
                     </div>

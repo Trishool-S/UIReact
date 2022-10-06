@@ -48,6 +48,9 @@ export default function Header(props) {
             <Link aria-label="live-monitor" to={RoutePath.liveMonitory}>
               Live Monitory
             </Link>
+            <Link aria-label="live-monitor" to={RoutePath.wellsinfo}>
+              Well Details
+            </Link>
             {loginInfo && loginInfo.user.type === "ClientAdmin" && (
               <Link aria-label="entity-landing" to={RoutePath.entryLanding}>
                 Entity
