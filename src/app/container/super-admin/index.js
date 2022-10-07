@@ -77,6 +77,18 @@ export default function SuperAdminDashboard() {
       {/* <h4>hello how are You???</h4> */}
       <div className="bradcramHeading">
         <Row>
+          <Col lg={4}><h2 className="headingAll mt-2 mb-0">Google MAP</h2></Col>
+          <Col lg={8} className="text-right">
+            <CommonButton
+              onClickedButton={() => navigate(RoutePath.GoogleMap)}
+              styles="btn-create-client"
+              title="MAP"
+            />
+          </Col>
+        </Row>
+      </div>
+      <div className="bradcramHeading">
+        <Row>
           <Col lg={4}><h2 className="headingAll mt-2 mb-0">Well Monitoring</h2></Col>
           <Col lg={8} className="text-right">
             <CommonButton

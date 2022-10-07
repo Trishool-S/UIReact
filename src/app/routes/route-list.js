@@ -25,6 +25,9 @@ const CreateClientAdmin = lazy(() =>
 const WellMonitoring = lazy(() =>
   import("../container/Well-monitoring")
 );
+const GoogleMap = lazy(() =>
+  import("../container/google-map")
+);
 const UserManagement = lazy(() => import("../container/user-management"));
 const Profile = lazy(() => import("../container/profile"));
 const EntityGroupCreation = lazy(() =>
@@ -89,6 +92,11 @@ export const RouteList = [
   {
     path: RoutePath.WellMonitoring,
     component: WellMonitoring,
+    isAuth: true,
+  },
+  {
+    path: RoutePath.GoogleMap,
+    component: GoogleMap,
     isAuth: true,
   },
   {

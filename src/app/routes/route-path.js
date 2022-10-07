@@ -12,6 +12,7 @@ export const RoutePath = {
   monitory:"/trend",
   createClientAdmin: "/create-client-admin",
   WellMonitoring:"/well-monitoring",
+  GoogleMap:"/google-map",
   userManagement: "/user-management",
   profile: "/profile",
   entityGroupCreation: "/entity-group-creation",
