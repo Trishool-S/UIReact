@@ -196,7 +196,7 @@ function LiveMonitory() {
     setIsLoading(true)
     e.preventDefault();
     // setIsLoading(true)
-    const response = await fetch(`https://3wd7itxgcc.execute-api.ap-south-1.amazonaws.com/Prod/v1/sdoz/telemetry/sensor/5/agg?start_time=${start_time}&end_time=${end_time}&step_size=${currentstepsize}&param_name=${currentparameter}`);
+    const response = await fetch(`https://3wd7itxgcc.execute-api.ap-south-1.amazonaws.com/Prod/v1/sdoz/telemetry/sensor/2/agg?start_time=${start_time}&end_time=${end_time}&step_size=${currentstepsize}&param_name=${currentparameter}`);
     const json_data = await response.json();
     console.log(json_data);
 
@@ -232,7 +232,7 @@ function LiveMonitory() {
     // setIsLoading(true)
     e.preventDefault();
     // setIsLoading(true)
-    const response = await fetch(`https://3wd7itxgcc.execute-api.ap-south-1.amazonaws.com/Prod/fetch_files_s3/5/data?start_time=${start_time}&end_time=${end_time}&step_size=${currentstepsize}&param_name=${currentparameter}`);
+    const response = await fetch(`https://3wd7itxgcc.execute-api.ap-south-1.amazonaws.com/Prod/fetch_files_s3/2/data?start_time=${start_time}&end_time=${end_time}&step_size=${currentstepsize}&param_name=${currentparameter}`);
     const json = await response.json();
 
     if (response.status === 200) {
@@ -283,7 +283,7 @@ function LiveMonitory() {
   useEffect(() => {
     setIsloading(true)
     async function getAlerts() {
-      const response = await fetch("https://3wd7itxgcc.execute-api.ap-south-1.amazonaws.com/Prod/v1/sdoz/telemetry/entity/5/latest");
+      const response = await fetch("https://3wd7itxgcc.execute-api.ap-south-1.amazonaws.com/Prod/v1/sdoz/telemetry/entity/2/latest");
       const res = await response.json();
       setData2(res)
       setParam(res.Parameters?.map((item) => item.name));

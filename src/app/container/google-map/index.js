@@ -64,26 +64,34 @@ import './map.scss';
 import './marker.scss';
 
 const mapStyles = {
-  width: '100%',
-  height: '100%'
+  width: '50%',
+  height: '97%'
 };
+const AnyReactComponent = ({ text }) => (
+  <div className="marker">
+    <div className="marker-pin"> </div>
+  </div>
+);
+
 
 export class MapContainer extends Component {
   render() {
     return (
-      <Map
+      <><Map
         google={this.props.google}
         zoom={9}
         style={mapStyles}
-        initialCenter={
-          {
-            lat:23.587961,
-            lng:72.369324
-          }
-        }
-        
-        text="My Marker"
-      />
+        initialCenter={{
+          lat: 23.587961,
+          lng: 72.369324
+        }}
+          />
+          <AnyReactComponent
+          lat={23.587961}
+          lng={72.369324}
+          text="My Marker"
+           />
+          </>
     );
   }
 }
