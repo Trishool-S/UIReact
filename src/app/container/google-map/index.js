@@ -60,29 +60,43 @@
 
 // export default WellMap;
 import React, { Component } from 'react';
-import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import './map.scss';
 import './marker.scss';
 // import Box from '@material-ui/core/Box';
 
 
 const mapStyles = {
-  width: '50%',
-  height: '97%'
+  width: '100%',
+  height: '94.5%'
 };
-const AnyReactComponent = ({ text }) => (
-  <div className="marker">
-    <div className="marker-pin"> </div>
-  </div>
-);
-// const Marker = props => {
-//   return <div className="marker">
-//    <div className="marker-pin"></div>
-//    </div>
-// }
 
 
 export class MapContainer extends Component {
+
+  state = {
+    showingInfoWindow: false,
+    activeMarker: {},
+    selectedPlace: {}
+  };
+
+
+  onMarkerClick = (props, marker, e) =>
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true
+    });
+
+  onClose = props => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      });
+    }
+  };
+
   render() {
     return (
       // <>
@@ -110,19 +124,31 @@ export class MapContainer extends Component {
         style={mapStyles}
         initialCenter={{
           lat: 23.587961,
-          lng: 72.369324
+          lng: 72.369324         
         }}
 
         onClick={this.onMapClicked}>
         <Marker onClick={this.onMarkerClick}
-          name={'Current location'}
+          name={'Mehsana wells Details'}
           position={{ lat: 23.587961, lng: 72.369324 }} />
         <Marker onClick={this.onMarkerClick}
-          name={'Current location'}
+          name={'Bechraji wells Details'}
           position={{ lat: 23.51401, lng: 72.182881 }} />
         <Marker onClick={this.onMarkerClick}
-          name={'Current location'}
+          name={'Ahmedabad wells Details'}
           position={{ lat: 23.033863, lng: 72.585022 }} />
+          <Marker onClick={this.onMarkerClick}
+          name={'wells Details'}
+          position={{ lat: 23.630189, lng: 71.532802 }} />
+        <InfoWindow
+          marker={this.state.activeMarker}
+          visible={this.state.showingInfoWindow}
+          onClose={this.onClose}
+        > 
+          <div>
+            <h4>{this.state.selectedPlace.name}</h4>
+          </div>
+        </InfoWindow>
       </Map>
     );
   }
