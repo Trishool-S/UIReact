@@ -120,11 +120,11 @@ export class MapContainer extends Component {
       // </>
       <Map
         google={this.props.google}
-        zoom={9}
+        zoom={13}
         style={mapStyles}
         initialCenter={{
-          lat: 23.587961,
-          lng: 72.369324         
+          lat: 23.39886785,
+          lng: 72.32708097
         }}
 
         onClick={this.onMapClicked}>
@@ -132,19 +132,68 @@ export class MapContainer extends Component {
           name={'Mehsana wells Details'}
           position={{ lat: 23.587961, lng: 72.369324 }} />
         <Marker onClick={this.onMarkerClick}
-          name={'Bechraji wells Details'}
-          position={{ lat: 23.51401, lng: 72.182881 }} />
+          name={''}
+          position={{ lat: 23.39613333, lng: 72.3267335 }} />
         <Marker onClick={this.onMarkerClick}
-          name={'Ahmedabad wells Details'}
-          position={{ lat: 23.033863, lng: 72.585022 }} />
+          name={''}
+          position={{ lat: 23.39886785, lng: 72.32708097 }} />
+        <Marker onClick={this.onMarkerClick}
+          name={''}
+          position={{ lat: 23.39943709, lng: 72.32383298 }} />
+        <Marker onClick={this.onMarkerClick}
+          name={''}
+          position={{ lat: 23.4016408, lng: 72.31861569 }} />
+        <Marker onClick={this.onMarkerClick}
+          name={''}
+          position={{ lat: 23.4004936, lng: 72.32581946 }} />
+        <Marker onClick={this.onMarkerClick}
+          name={''}
+          position={{ lat: 23.4044475, lng: 72.32694971 }} />
+        <Marker onClick={this.onMarkerClick}
+          name={''}
+          position={{ lat: 23.4267763, lng: 72.36933417 }} />
+        <Marker onClick={this.onMarkerClick}
+          name={''}
+          position={{ lat: 23.4308, lng: 72.3758 }} />
+        <Marker onClick={this.onMarkerClick}
+          name={''}
+          position={{ lat: 23.4444953, lng: 23.4444953 }} />
+        <Marker onClick={this.onMarkerClick}
+          name={''}
+          position={{ lat: 23.4326, lng: 72.38176111 }} />
+        <Marker onClick={this.onMarkerClick}
+          name={''}
+          position={{ lat: 23.4216099, lng: 72.388424 }} />
+        <Marker onClick={this.onMarkerClick}
+          name={''}
+          position={{ lat: 23.4216099, lng: 72.388424 }} />
+        <Marker onClick={this.onMarkerClick}
+          name={''}
+          position={{ lat: 23.4308761, lng: 72.37583361 }} />
+        <Marker onClick={this.onMarkerClick}
+          name={''}
+          position={{ lat: 23.4355063, lng: 72.38000278 }} />
+        <Marker onClick={this.onMarkerClick}
+          name={''}
+          position={{ lat: 23.4312455, lng: 72.38946017 }} />
+        <Marker onClick={this.onMarkerClick}
+          name={''}
+          position={{ lat: 23.43597586, lng: 72.3870021 }} />
+        <Marker onClick={this.onMarkerClick}
+          name={''}
+          position={{ lat: 23.45027778, lng: 72.3875 }} />
+        <Marker onClick={this.onMarkerClick}
+          name={''}
+          position={{ lat: 23.40173869, lng: 72.31842054 }} />
           <Marker onClick={this.onMarkerClick}
-          name={'wells Details'}
-          position={{ lat: 23.630189, lng: 71.532802 }} />
+          name={''}
+          position={{ lat: 23.40444755, lng:  72.32694971}} />
+
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
           onClose={this.onClose}
-        > 
+        >
           <div>
             <h4>{this.state.selectedPlace.name}</h4>
           </div>
