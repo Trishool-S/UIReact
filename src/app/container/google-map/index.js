@@ -68,7 +68,7 @@ import './marker.scss';
 
 const mapStyles = {
   width: '100%',
-  height: '94.5%'
+  height: '94.5%' 
 };
 
 
@@ -185,9 +185,9 @@ export class MapContainer extends Component {
         <Marker onClick={this.onMarkerClick}
           name={''}
           position={{ lat: 23.40173869, lng: 72.31842054 }} />
-          <Marker onClick={this.onMarkerClick}
+        <Marker onClick={this.onMarkerClick}
           name={''}
-          position={{ lat: 23.40444755, lng:  72.32694971}} />
+          position={{ lat: 23.40444755, lng: 72.32694971 }} />
 
         <InfoWindow
           marker={this.state.activeMarker}

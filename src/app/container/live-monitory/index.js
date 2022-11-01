@@ -9,6 +9,7 @@ import {
 } from 'mdb-react-ui-kit';
 import "./style.css";
 import "./spinner.css";
+import { CSVLink } from "react-csv";
 import { Container } from "react-bootstrap";
 import { Bar, Line } from 'react-chartjs-2';
 import { DateRangePicker } from 'rsuite';
@@ -84,6 +85,65 @@ function LiveMonitory() {
   }
   var start_time = (toTimestamp(startDate));
   var end_time = (toTimestamp(endDate));
+
+
+  const headers = [
+        { label: "entity_name", key: "entity_name" },
+        { label: "entity_type", key: "entity_type" },
+        { label: currentparameter, key: "Sensor_details.Pressure" },
+        { label: "Timestamp", key: "Sensor_details.Timestamp" },
+        // { label: currentparameter, key: "Sensor_details.temperature" },
+        // { label: "average_value", key: "average_value" },
+        // { label: "min_value", key: "min_value" },
+        // { label: "max_value", key: "max_value" },
+    ];
+    const data_1 = [
+        {
+            entity_name: entity.map(item => item.entity_name),
+            entity_type: entity.map(item => item.entity_type),
+            // average_value: Sensor_data.map(item => item.average_value),
+            // min_value: Sensor_data.map(item => item.min_value),
+            // max_value: Sensor_data.map(item => item.max_value),
+        },
+        {
+            Sensor_details:
+                { Pressure: Data.map(o => parseFloat(o.Pressure)), temperature: Data.map(o => parseFloat(o.temperature)) ,Timestamp:date  },
+        }
+        
+    ];
+
+    const data__1 = [
+      // {"Timestamp": "2022-10-20 18:00:00", "Pressure": 18.43}, 
+      // {"Timestamp": "2022-10-20 18:05:00", "Pressure": 20.3},
+      //  {"Timestamp": "2022-10-20 18:10:00", "Pressure": 21.32},
+      //   {"Timestamp": "2022-10-20 18:15:00", "Pressure": 20.42}
+        { Timestamp:date , Pressure: Data.map(o => parseFloat(o.Pressure)) }
+      ]
+   const exportcsv = () => {
+    {
+      const csvRow=[];
+      const A = [['id','Timestamp','Pressure']]
+      const result = data__1
+
+      for (var item=0;item<result.length;item++)
+      {
+        A.push([result[item].Timestamp,result[item].Pressure])
+      }
+      for(var i=0;i<A.length;++i)
+      {
+        csvRow.push(A[i].join(","))
+      }
+      var csvString = csvRow.join("%0A");
+      var a = document.createElement("a");
+      a.href = 'data:attachment/csv'+ csvString;
+      a.target = "_blank";
+      a.download = "testfile.csv";
+      document.body.appendChild(a)
+      a.click();
+      console.log(result)
+      console.warn(csvString)
+    }
+  }
 
 
 
@@ -226,7 +286,9 @@ function LiveMonitory() {
     setEntity(entity)
     setSensor_data(Sensor_data)
     setIsLoading(false)
+    console.warn(date)
   }
+ 
 
   async function Enter(e) {
     // setIsLoading(true)
@@ -302,9 +364,10 @@ function LiveMonitory() {
     }
   }, []);
 
-  console.warn(Data2)
-  console.warn(time)
-  console.warn(param)
+  // console.warn(Data2)
+  console.warn(date)
+  // console.warn(time)
+  // console.warn(param)
   return (
     // <React.Fragment>
     //   <nav className="navbar navbar-expand-lg navbar-light bg-light1">
@@ -768,6 +831,18 @@ function LiveMonitory() {
                             download>Export Data
                           </button>
                         </div>
+                        {/* <div className="col-sm-3">
+                                <CSVLink type="submit" className="btn btn-primary"
+                                    headers={headers}
+                                    data={data_1}
+                                    filename="results.csv"
+                                    target="_blank"
+                                    download
+                                >
+                                    Export Data 
+                                </CSVLink> 
+                            </div> */}
+                            {/* <button className="btn btn-primary" onClick={()=>{exportcsv()}}>Export Data</button> */}
                       </form>
                     </div>
                     {
@@ -775,7 +850,6 @@ function LiveMonitory() {
                         <tr>
                           <th> Entity Name: </th>
                           <td className="fw-bold" key={item.entity_name}>{item.entity_name}&nbsp;&nbsp;&nbsp;</td>
-
                           <th>Entity Type: </th>
                           <td className="fw-bold">{item.entity_type}&nbsp;&nbsp;&nbsp;</td>
                         </tr>
@@ -828,7 +902,6 @@ function LiveMonitory() {
                       <option>60</option>
                     </select>
                   </div>
-
                   <div className="col-1">
                     <label className="form-label fw-bold">DateTime</label>
                     <DateRangePicker
