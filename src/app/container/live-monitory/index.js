@@ -875,7 +875,7 @@ function LiveMonitory() {
               <div className="headersettings" role="heading">
                 <span className="widget-icon"><i className="fa fa-table"></i></span>
                 <div className="card-header border-0">
-                  <h4> History </h4>
+                  <h4> History page</h4>
                 </div>
                 <form className="row g-3" onSubmit={Submit}>
                   <div className="">
