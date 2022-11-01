@@ -68,7 +68,7 @@ import './marker.scss';
 
 const mapStyles = {
   width: '100%',
-  height: '94.5%' 
+  height: '95.5%' 
 };
 
 
