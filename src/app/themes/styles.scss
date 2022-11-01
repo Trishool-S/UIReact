@@ -29,7 +29,7 @@ body {
   background-color: $primary-color;
   box-shadow: 0px 0px 10px -5px $primary-color;
   // @include theme-aware("background-color", "primary-color");
-  background-image: linear-gradient(to right, #663398, #4684f0);
+  background-image: linear-gradient(to right,#0d6efd, #8eb7ff);
 
   .headerLeftMenu {
     float: left;
@@ -237,9 +237,8 @@ body {
   // @include theme-aware("color", "color-text");
   background-image: linear-gradient(
     to bottom right,
-    $primary-color,
-    $primary-color,
-    #4684f0
+    $white-color,
+    $white-color,
   );
   float: left;
   width: 100%;
@@ -253,12 +252,11 @@ body {
     min-height: 550px;
     background-image: linear-gradient(
       to bottom right,
-      $primary-color,
-      $white-color
+      #0d6efd, #8eb7ff
     );
     border-radius: 6px;
     padding: 30px;
-    color: $white-color;
+    color: black;
     h1 {
       float: left;
       text-transform: uppercase;
@@ -287,7 +285,7 @@ body {
     .btn-create-client {
       width: 180px;
       padding: 10px;
-      background-color: $primary-color !important;
+      background-color: #0d6efd !important;
       color: $white-color !important;
       float: left;
       &:hover {
@@ -310,7 +308,8 @@ body {
 
 .div-top-btn {
   width: 100%;
-  float: left;
+  float: right;
+  padding-left: 42rem;
 }
 
 .btn-super-top {
@@ -329,7 +328,7 @@ body {
   height: 15px;
   // background-color: #333333;
   top: 12px;
-  left: 0px;
+  left: 0px;   
   content: "";
   position: absolute;
   @include theme-aware("background-color", "heading-color");

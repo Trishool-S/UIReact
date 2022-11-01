@@ -16,9 +16,17 @@ const EntryLandind = lazy(() => import("../container/entity-landing"));
 const LiveMonitory = lazy(() => import("../container/live-monitory"));
 const Wellinfo = lazy(() => import("../container/live-monitory/wellinfo"));
 const Trend = lazy(() => import("../container/live-monitory/trend"));
+const Well = lazy(() => import("../container/welldetails"));
+
 
 const CreateClientAdmin = lazy(() =>
   import("../container/create-client-admin")
+);
+const WellMonitoring = lazy(() =>
+  import("../container/Well-monitoring")
+);
+const GoogleMap = lazy(() =>
+  import("../container/google-map")
 );
 const UserManagement = lazy(() => import("../container/user-management"));
 const Profile = lazy(() => import("../container/profile"));
@@ -67,6 +75,11 @@ export const RouteList = [
     isAuth: true,
   },
   {
+    path: RoutePath.wellsinfo,
+    component: Well,
+    isAuth: true,
+  },
+  {
     path: RoutePath.monitory,
     component: Trend,
     isAuth: true,
@@ -74,6 +87,16 @@ export const RouteList = [
   {
     path: RoutePath.createClientAdmin,
     component: CreateClientAdmin,
+    isAuth: true,
+  },
+  {
+    path: RoutePath.WellMonitoring,
+    component: WellMonitoring,
+    isAuth: true,
+  },
+  {
+    path: RoutePath.GoogleMap,
+    component: GoogleMap,
     isAuth: true,
   },
   {
