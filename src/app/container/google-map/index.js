@@ -66,9 +66,10 @@ import './marker.scss';
 // import Box from '@material-ui/core/Box';
 
 
-const mapStyles = {
-  width: '100%',
-  height: '94.5%' 
+let mapStyles = {
+  width: '50%',
+  height: '50%',
+  margin: "200px auto"
 };
 
 
@@ -79,7 +80,6 @@ export class MapContainer extends Component {
     activeMarker: {},
     selectedPlace: {}
   };
-
 
   onMarkerClick = (props, marker, e) =>
     this.setState({
@@ -123,8 +123,8 @@ export class MapContainer extends Component {
         zoom={13}
         style={mapStyles}
         initialCenter={{
-          lat: 23.39886785,
-          lng: 72.32708097
+          lat: 23.427843,
+          lng: 72.334287
         }}
 
         onClick={this.onMapClicked}>
