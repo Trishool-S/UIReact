@@ -257,7 +257,7 @@ export default function CreateClientAdmin() {
         }
       });
 
-      dictRequBody["adminEntity"] = dictAdminEntity;
+      dictRequBody["adminEntity"]   = dictAdminEntity;
 
       if (!isValideInput) {
         setIsInputError(true);
