@@ -822,14 +822,14 @@ function LiveMonitory() {
                           <button type="submit" className="btn btn-primary">Submit</button>
                         </div>
                         <div className="col-sm-3">
-                          <button
+                          <Button
                             className="btn btn-primary"
                             type="submit"
                             onClick={Enter}
                             color="transparent"
                             target="_blank"
                             download>Export Data
-                          </button>
+                          </Button>
                         </div>
                         {/* <div className="col-sm-3">
                                 <CSVLink type="submit" className="btn btn-primary"

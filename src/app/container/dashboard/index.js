@@ -11,8 +11,10 @@ function Dashboard() {
       return <SuperAdminDashboard />;
     } else if (loginInfo && loginInfo.user.type === "ClientAdmin") {
       return <EntryLanding />;
+    } else if (loginInfo && loginInfo.user.type === "Customer") {
+      return <EntryLanding />;
     }
-    return <h1>Working on Customer Type</h1>;
+    // return <h1>Working on Customer Type</h1>;
   };
 
   return <div className="div-dashboard">{renderDashboardbaseOnUserType()}</div>;
