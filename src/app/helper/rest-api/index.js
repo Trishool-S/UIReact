@@ -29,7 +29,7 @@ const commonAxiosService = (dictRest, resolve, reject) => {
       }
     })
     .catch(function (error) {
-      if (error.response.status === 401 || error.response.status === 406) {
+      if (error.response.status === 401 || error.response.status === 406) {    
         REMOVE_LOCAL_STORAGE_DATA(KEY_LOCAL_STORAGE.sessionToken);
         window.location.reload();
       } else {
