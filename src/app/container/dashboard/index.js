@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import EntryLanding from "../entity-landing";
 import SuperAdminDashboard from "../super-admin";
+import GoogleMap from "../google-map";
 
 function Dashboard() {
   const { loginInfo } = useSelector((state) => state.rLogin);
@@ -12,7 +13,7 @@ function Dashboard() {
     } else if (loginInfo && loginInfo.user.type === "ClientAdmin") {
       return <EntryLanding />;
     } else if (loginInfo && loginInfo.user.type === "Customer") {
-      return <EntryLanding />;
+      return <GoogleMap />;
     }
     // return <h1>Working on Customer Type</h1>;
   };

@@ -199,7 +199,7 @@ export class MapContainer extends Component {
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
           onClose={this.onClose}
-        >
+        >      
           <div>
             <h6>{this.state.selectedPlace.name}</h6>
           </div>
