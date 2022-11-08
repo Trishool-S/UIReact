@@ -73,9 +73,8 @@ export default function SuperAdminDashboard() {
           <Col lg={4}><h2 className="headingAll mt-2 mb-0">Super Admin Dashboard</h2></Col>
           <Col lg={8} className="text-right">{renderTopButton()}</Col>
         </Row>
-      </div>
-      {/* <h4>hello how are You???</h4> */}
-      <div className="bradcramHeading">
+      </div>                                       
+      <div className="bradcramHeading"> 
         <Row>
           <Col lg={4}><h2 className="headingAll mt-2 mb-0">Google MAP</h2></Col>
           <Col lg={8} className="text-right">
