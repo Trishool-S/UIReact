@@ -1,10 +1,10 @@
 export const BaseUrl =
   process.env.REACT_APP_ENV === "production"
-    ? "https://nso3fpbvh1.execute-api.ap-south-1.amazonaws.com/Prod/admin/api/"
-    : "https://nso3fpbvh1.execute-api.ap-south-1.amazonaws.com/Prod/admin/api/";
+    ? "https://a641jo3dda.execute-api.ap-south-1.amazonaws.com/dev/admin/"
+    : "https://a641jo3dda.execute-api.ap-south-1.amazonaws.com/dev/admin/";
 
 export const auth = {
-  login: "Authorization",
+  login: "authorization/login",
 };
 
 export const endpoints = {
@@ -12,4 +12,4 @@ export const endpoints = {
   user: "User",
   entity: "Entity",
   entityGroup: "GroupEntity",
-};
+}; 

@@ -777,8 +777,6 @@ export default function WellMonitoring() {
                     </table>
                 </div>
             </>
-            {/* </div>
-            </div> */}
         </>
     );
 }

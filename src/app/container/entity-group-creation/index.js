@@ -82,7 +82,7 @@ export default function EntityGroupCreation() {
       ));
     }
   };
-
+ 
   const onChangeTextInput = (value, index) => {
     let arrInput = [...inputFieldInfo];
     let info = arrInput[index];

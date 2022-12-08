@@ -100,12 +100,12 @@ export default function Header(props) {
                 <li onClick={() => navigation(RoutePath.profile)}>
                   User Profile
                 </li>
-                <li onClick={btnLogoutClicked}>Log Out</li>
+                <li onClick={btnLogoutClicked}>Log Out</li> 
               </ul>
             </div>
           </div>
         </div>
-      )}
+      )}     
     </>
   );
 }

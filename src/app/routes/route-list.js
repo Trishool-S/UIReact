@@ -28,6 +28,7 @@ const WellMonitoring = lazy(() =>
 const GoogleMap = lazy(() =>
   import("../container/google-map")
 );
+
 const UserManagement = lazy(() => import("../container/user-management"));
 const Profile = lazy(() => import("../container/profile"));
 const EntityGroupCreation = lazy(() =>
