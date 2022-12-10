@@ -7,8 +7,8 @@ const ApiEntity = () => {
       GetApiRequest(endpoints.entity, "", accessToken)
         .then((res) => {
           let arrEntities = [];
-          if (res.entities && Array.isArray(res.entities)) {
-            arrEntities = res.entities;
+          if (res && Array.isArray(res)) {
+            arrEntities = res;
           }
           resolve(arrEntities);
         })

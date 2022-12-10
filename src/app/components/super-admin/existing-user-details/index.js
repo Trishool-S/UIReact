@@ -21,6 +21,7 @@ export default function ExistingUserDetails(_props) {
 
   const renderTableRow = () => {
     return listClients.map((item, index) => (
+      
       <tr key={index}>
         <td>
           <input type={"checkbox"} />
@@ -39,8 +40,13 @@ export default function ExistingUserDetails(_props) {
         <td>{item.banner}</td>
         <td>{`${item.isActive}`}</td>
       </tr>
+      
     ));
+    
+    
   };
+  console.log(listClients)
+  
 
   /**
    * main

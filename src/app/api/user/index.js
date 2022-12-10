@@ -16,8 +16,8 @@ const ApiUser = () => {
       GetApiRequest(strUrl, "", accessToken)
         .then((res) => {
           let arrClients = [];
-          if (res.users && Array.isArray(res.users)) {
-            arrClients = res.users;
+          if (res && Array.isArray(res)) {
+            arrClients = res;
           }
           resolve(arrClients);
         })

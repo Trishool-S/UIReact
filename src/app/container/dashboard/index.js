@@ -17,7 +17,7 @@ function Dashboard() {
     }
   };
 
-  return <div className="div-dashboard">{renderDashboardbaseOnUserType}</div>;
+  return <div className="div-dashboard">{renderDashboardbaseOnUserType()}</div>;
 }
 
 export default Dashboard;
