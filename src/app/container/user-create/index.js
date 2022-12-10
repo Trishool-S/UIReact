@@ -144,10 +144,10 @@ export default function UserCreation() {
     return filterArr;
   };
 
-  const apiCallGetClientDetails = (clientId) => {
+  const apiCallGetClientDetails = (clientid) => {
     setIsLoading(true);
     ApiClient()
-      .apiCallForGetClientDetails(clientId, loginInfo.token.idToken)
+      .apiCallForGetClientDetails(clientid, loginInfo.token.idToken)
       .then((res) => {
         setIsLoading(false);
         if (

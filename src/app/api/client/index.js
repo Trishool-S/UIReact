@@ -1,6 +1,6 @@
 import { GetApiRequest, PostApiRequest } from "../../helper/rest-api";
 import { endpoints } from "../../helper/rest-api/url-schema";
-import MockResponse from "./mock-response.json";
+// import MockResponse from "./mock-response.json";
 
 const ApiClient = () => {
   /**
@@ -14,8 +14,8 @@ const ApiClient = () => {
       GetApiRequest(endpoints.client, "", accessToken)
         .then((res) => {
           let arrClients = [];
-          if (res.clients && Array.isArray(res.clients)) {
-            arrClients = res.clients;
+          if (res && Array.isArray(res)) {
+            arrClients = res;
           }
           resolve(arrClients);
         })
@@ -45,13 +45,13 @@ const ApiClient = () => {
 
   /**
    *  get client details by client Id
-   * @param {*} clientId
+   * @param {*} clientid
    * @param {*} accessToken
    * @returns
    */
-  const apiCallForGetClientDetails = (clientId, accessToken) => {
+  const apiCallForGetClientDetails = (clientid, accessToken) => {
     return new Promise((resolve, reject) => {
-      GetApiRequest(`${endpoints.client}/${clientId}`, "", accessToken)
+      GetApiRequest(`${endpoints.client}/${clientid}`, "", accessToken)
         .then((res) => {
           resolve(res);
         })
