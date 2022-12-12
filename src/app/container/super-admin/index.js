@@ -20,7 +20,7 @@ export default function SuperAdminDashboard() {
   const [isLoading, setIsLoading] = useState(false);
 
   const isInitCall = useRef(true);
-  console.log(listClients);
+  
   useEffect(() => {
     if (isInitCall.current) {
       isInitCall.current = false;
@@ -54,8 +54,6 @@ export default function SuperAdminDashboard() {
       <ExistingUserDetails listClients={listClients} isLoading={isLoading} />
     );
   };
-
-  console.log(listClients);
 
   /**
    * client, user and help button

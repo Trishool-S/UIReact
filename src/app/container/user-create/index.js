@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
@@ -151,17 +150,19 @@ export default function UserCreation() {
       .then((res) => {
         setIsLoading(false);
         if (
-          res.client &&
-          res.client.entities &&
-          Array.isArray(res.client.entities)
+          res &&
+          res.entities &&
+          Array.isArray(res.entities)
         ) {
-          setListEntity(res.client.entities);
+          setListEntity(res.entities);
         }
       })
       .catch((err) => {
         setIsLoading(false);
       });
+     
   };
+  
 
   const onChangeTextInput = (value, index) => {
     let arrInput = [...inputFieldInfo];
