@@ -47,7 +47,7 @@ const ApiUser = () => {
 
   /**
    *  get user details by user Id
-   * @param {*} clientId
+   * @param {*} clientid
    * @param {*} accessToken
    * @returns
    */
