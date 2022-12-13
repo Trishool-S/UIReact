@@ -12,13 +12,13 @@ function Dashboard() {
       return <SuperAdminDashboard />;
     } else if (loginInfo && loginInfo.user.type === "CLIENT_ADMIN") {
       return <EntryLanding />;
-    } else if (loginInfo && loginInfo.user.type === "Customer") {
+    } else if (loginInfo && loginInfo.user.type === "EMPLOYEE") {
       return <GoogleMap />;
     }
   };
 
   return <div className="div-dashboard">{renderDashboardbaseOnUserType()}</div>;
-  
+
 }
 
 export default Dashboard;
