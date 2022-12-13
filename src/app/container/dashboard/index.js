@@ -13,7 +13,7 @@ function Dashboard() {
     } else if (loginInfo && loginInfo.user.type === "CLIENT_ADMIN") {
       return <EntryLanding />;
     } else if (loginInfo && loginInfo.user.type === "EMPLOYEE") {
-      return <GoogleMap />;
+      return <SuperAdminDashboard />;
     }
   };
 
