@@ -6,6 +6,7 @@ import { RoutePath } from "../../routes/route-path";
 import { apiCallForGetEntityList } from "../../store/reducer/entity-landing/enityt-list";
 import { EntityHeaderButtoh } from "./entity-header-btn.js";
 import { Row, Col, Modal } from "react-bootstrap";
+import TopButtonSuperAdmin from "./common-top-button"
 
 /**
  * components
@@ -18,6 +19,7 @@ const EntityListTable = lazy(() =>
 function EntryLanding() {
   const navigation = useNavigate();
 
+
   //dispatch
   const dispatch = useDispatch();
 
@@ -28,48 +30,61 @@ function EntryLanding() {
     dispatch(apiCallForGetEntityList());
   }, []);
 
+  const renderTopButton = () => {
+    return <TopButtonSuperAdmin navigate={navigation} />;
+  };
+
   const renderHeaderButton = () => {
     return (
-      <div className="div-header-entity">
-        {EntityHeaderButtoh.map((item, index) => (
-          <CommonButton
-            key={index}
-            title={item.name}
-            styles="btn-header-entity"
-            onClickedButton={() => {
-              if (item.routeName.length > 0) {
-                navigation(item.routeName);
-              }
-            }}
-          />
-        ))}
-      </div>
+      <>
+        <div className="div-header-entity">
+          {EntityHeaderButtoh.map((item, index) => (
+            <CommonButton
+              key={index}
+              title={item.name}
+              styles="btn-header-entity"
+              onClickedButton={() => {
+                if (item.routeName.length > 0) {
+                  navigation(item.routeName);
+                }
+              }} />
+          ))}
+        </div></>
     );
   };
 
   return (
     <div className="div-dashboard">
+      <div className="bradcramHeading">
+        <Row>
+          <Col lg={4}><h2 className="headingAll mt-2 mb-0">Existing Client Details</h2></Col>
+          <Col lg={8} className="text-right">{renderTopButton()}</Col>
+        </Row>
+      </div>
+        <Row>
+          <Col lg={4}><h2 className="headingAll mt-2 mb-0">Existing Entity Details</h2></Col>
+        </Row>
       {renderHeaderButton()}
-      
+
       {/* {renderLocationDropdown()} */}
-      <div className="div-top-btn mb-2">
+      <div className="bradcramHeading">
         <Row>
           <Col xl={4} lg={4}><h2 className="headingAll mt-2 mb-0">Entity Management</h2></Col>
           <Col xl={8} lg={8} className="text-right">
-          <CommonButton
-          onClickedButton={() => navigation(RoutePath.entityCreation)}
-          styles="btn-create-client"
-          title="Create New Entity"
-        />
+            <CommonButton
+              onClickedButton={() => navigation(RoutePath.entityCreation)}
+              styles="btn-create-client"
+              title="Create New Entity"
+            />
           </Col>
         </Row>
-        
         {/* update and delete btn */}
 
         {/* <CommonButton styles="btn-create-client" title="Update" /> */}
         {/* <CommonButton styles="btn-create-client" title="Delete" /> */}
       </div>
       <EntityListTable listEntity={listEntity} />
+      
       {isLoading && (
         <CommonSpinner styles="client-loader" isLoading={isLoading} />
       )}

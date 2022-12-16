@@ -66,7 +66,7 @@ export default function EntityGroupManagement() {
   return (
     <div className="div-dashboard">
       {renderHeaderButton()}
-      <div className="div-top-btn mb-2 mt-2">
+      <div className="bradcramHeading">
         <Row>
           <Col xl={4} lg={4}>
             <h4 className="headingAll mt-2 mb-0">Entity Group Management</h4>

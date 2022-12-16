@@ -11,16 +11,16 @@ function Dashboard() {
     if (loginInfo && loginInfo.user.type === "SuperAdmin") {
       return <SuperAdminDashboard />;
     } else if (loginInfo && loginInfo.user.type === "CLIENT_ADMIN") {
+      return <SuperAdminDashboard />;
+    } else if (loginInfo && loginInfo.user.type === "EMPLOYEE") {
       return <EntryLanding />;
     } else if (loginInfo && loginInfo.user.type === "Customer") {
       return <GoogleMap />;
     }
   };
-
   return <div className="div-dashboard">{renderDashboardbaseOnUserType()}</div>;
   
 }
-
 export default Dashboard;
 
 

@@ -66,7 +66,7 @@ export default function EntityGroupCreation() {
             </div>
           ) : (
             <CommonTextInput
-              placeholdertext={item.lable}
+              placeholdertext={item.label}
               value={item.value}
               changetextinput={(e) => onChangeTextInput(e, index)}
               id={item.key}
