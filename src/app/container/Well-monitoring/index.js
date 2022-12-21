@@ -178,7 +178,7 @@ export default function WellMonitoring() {
                                 </td>
                                 <td>
                                     <b>SPP</b> :
-                                    <b>OLR</b> :
+                                    <b>OLR</b> :   
                                     <b>VFD</b> :
                                 </td>
                                 <td>
@@ -682,11 +682,8 @@ export default function WellMonitoring() {
                                 </td>
                                 <td>
                                     <b>SPP</b> :
-
                                     <b>OLR</b> :
-
                                     <b>VFD</b> :
-
                                 </td>
                                 <td>
                                     <span>
