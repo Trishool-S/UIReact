@@ -713,7 +713,7 @@ export default function WellMonitoring() {
                                 <td>Linch GGS</td>
                                 <td>
                                     <Link to={RoutePath.liveMonitory}>
-                                        LNC#157
+                                        LNC#158
                                     </Link>
                                 </td>
                                 <td>
@@ -721,7 +721,7 @@ export default function WellMonitoring() {
                                 </td>
                                 <td><center>DOL</center></td>
                                 <td>Timer Mode</td>
-                                <td>Flowing</td><td>
+                                <td>Flowing</td><td> 
                                     <span >On</span>
                                 </td>
                                 <td>
