@@ -18,7 +18,7 @@ export default function EntityCreation() {
   const [inputFieldInfo, setInputFieldInfo] = useState(InputFieldList);
   const [alertMessage, setAlertMessage] = useState("");
   const [isSuccessAlert, setIsSuccessAlert] = useState(true);
-  const [isLoadingAdd, setIsLoadingAdd] = useState(false);
+  const [isLoadingAdd, setIsLoadingAdd] = useState(false);   
   const [isInputError, setIsInputError] = useState(false);
   //useState
   const { listEntityGroup, isLoading } = useSelector(
@@ -28,8 +28,21 @@ export default function EntityCreation() {
 
   //dispatch
   const dispatch = useDispatch();
-
+  
   //navigation
+
+
+
+
+
+
+
+
+
+
+
+
+  
   const navigation = useNavigate();
 
   useEffect(() => {
@@ -62,7 +75,7 @@ export default function EntityCreation() {
                 type="checkbox"
                 onChange={(e) => onChangeTextInput(!item.value, index)}
               />
-              <label>Allow</label>
+              <label>Allow</label>    
             </div>
           ) : (
             <CommonTextInput
@@ -121,14 +134,14 @@ export default function EntityCreation() {
           setIsLoadingAdd(false);
           setIsSuccessAlert(true);
           setAlertMessage("Entity Created Successfully");
-          setTimeout(() => {
+          setTimeout(() => { 
             if (loginInfo && loginInfo.user.type === "SuperAdmin") {
               navigation(RoutePath.entryLanding);
             } else {
               navigation(RoutePath.dashboard);
             }
           }, 4000);
-        })
+        })                 
         .catch((err) => {
           setIsLoadingAdd(false);
           setIsSuccessAlert(false);
@@ -173,4 +186,4 @@ export default function EntityCreation() {
       </div>
     </div>
   );
-}
+}  
